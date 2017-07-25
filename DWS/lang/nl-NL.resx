@@ -127,16 +127,16 @@
     <value>Open en bewerk het HOSTS bestand</value>
   </data>
   <data name="btnProfessionalMode" xml:space="preserve">
-    <value>Schakel de Proffesional Modus in</value>
+    <value>Schakel de proffesionele modus in</value>
   </data>
   <data name="btnRestoreSystem" xml:space="preserve">
-    <value>Herstel Systeem</value>
+    <value>Systeemherstel</value>
   </data>
   <data name="checkBoxAddToHosts" xml:space="preserve">
-    <value>Voeg spionage domeinen aan het Hosts bestand toe, en blokkeer in Windows Firewall</value>
+    <value>Voeg spionage domeinen aan het hosts bestand toe en blokkeer deze in de Windows Firewall</value>
   </data>
   <data name="checkBoxCreateSystemRestorePoint" xml:space="preserve">
-    <value>Maak een herstelpunt aan.</value>
+    <value>Maak een herstelpunt aan</value>
   </data>
   <data name="checkBoxDeleteWindows10Apps" xml:space="preserve">
     <value>Verwijder Windows 10 Metro Apps</value>
@@ -148,20 +148,20 @@
     <value>Schakel Windows Defender uit</value>
   </data>
   <data name="checkBoxKeyLoggerAndTelemetry" xml:space="preserve">
-    <value>Verwijder de Keylogger, en schakel Telematrie uit</value>
+    <value>Verwijder de keylogger en schakel telemetrie uit</value>
   </data>
   <data name="checkBoxSetDefaultPhoto" xml:space="preserve">
-    <value>Zet de standaard Windows Photo viewer</value>
+    <value>Schakel Windows Photo viewer in als standaard</value>
   </data>
   <data name="checkBoxSPYTasks" xml:space="preserve">
     <value>Schakel spionage services en taken uit</value>
   </data>
   <data name="Complete" xml:space="preserve">
-    <value>Voltooit!</value>
+    <value>Voltooid!</value>
   </data>
   <data name="CompleteMSG" xml:space="preserve">
-    <value>Voltooit!
-Opnieuw upstarten is verijst om alle spyware uit te kunnen schakelen.
+    <value>Voltooid!
+Opnieuw opstarten is vereist om alle spyware uit te kunnen schakelen.
 Nu opnieuw opstarten?</value>
   </data>
   <data name="Delete" xml:space="preserve">
@@ -180,15 +180,15 @@ Nu opnieuw opstarten?</value>
     <value>Fout!</value>
   </data>
   <data name="ErrorMSG" xml:space="preserve">
-    <value>Voltooit! Fouten - {0}
-Opnieuw upstarten is verijst om alle spyware uit te kunnen schakelen.
+    <value>Voltooid! Fouten - {0}
+Opnieuw opstarten is vereist om alle spyware uit te kunnen schakelen.
 Nu opnieuw opstarten?</value>
   </data>
   <data name="Info" xml:space="preserve">
     <value>Info</value>
   </data>
   <data name="labelInfoDeleteMetroApps" xml:space="preserve">
-    <value>Metro apps worden permanent verwijderd, herstel is niet mogelijk.</value>
+    <value>Metro apps worden permanent verwijderd, herstel hiervan is niet mogelijk.</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>Links</value>
@@ -203,7 +203,7 @@ Nu opnieuw opstarten?</value>
     <value>Zeker?</value>
   </data>
   <data name="Restart" xml:space="preserve">
-    <value>Opnieuw opstarten verijst.
+    <value>Opnieuw opstarten vereist.
 Nu opnieuw opstarten?</value>
   </data>
   <data name="tabPageAbout" xml:space="preserve">
@@ -213,7 +213,7 @@ Nu opnieuw opstarten?</value>
     <value>Start</value>
   </data>
   <data name="tabPageReadMe" xml:space="preserve">
-    <value>ReadME</value>
+    <value>ReadME bestand</value>
   </data>
   <data name="tabPageSettings" xml:space="preserve">
     <value>Instellingen</value>
@@ -231,12 +231,12 @@ Nu opnieuw opstarten?</value>
     <value>Rapporteer een fout.</value>
   </data>
   <data name="ReadMeTextBox" xml:space="preserve">
-    <value>Dit Programma verwijderd de ingebouwde spyware in Windows 7, 8, 8.1, Server 2008-2012 R2 en 10.
-Het programma is Open-Source, de broncode is te vinden op Github.
-Dit programma verwijderd alle spyware die is ingebouwd door Microsoft in Windows. Sommige Elementen van telematrie worden verwijderd, en de andere worden uitgeschakeld.
+    <value>Dit programma verwijderd de ingebouwde spyware in Windows 7, 8, 8.1, Server 2008-2012 R2 en 10.
+Het programma is Open-Source, de broncode is te vinden op GitHub.
+Dit programma verwijderd alle spyware die is ingebouwd door Microsoft in Windows. Sommige Elementen van telematrie worden verwijderd en de andere worden uitgeschakeld.
 Het programma kan Windows Update uitschakelen, hierdoor blijf je annoniem omdat je geen nieuwe updates ontvangt van spyware.
 De verwijder Metro apps functie werkt zeer goed, Metro apps draaien in de achtergrond en nemen geheugen in beslag. Sommige apps bespioneren je.
-Veel IP adressen van Microsoft worden geblokkeerd, waar data naartoe gaat. De meeste spyware wordt in het HOSTS bestand en Windows Firewall geblokkeerd. 
+Veel IP-adressen van Microsoft worden geblokkeerd, waar data naartoe gaat. De meeste spyware wordt in het HOSTS bestand en Windows Firewall geblokkeerd. 
 het meest van dit programma kan niet teruggedraait worden, zelfts niet na een windows herstel doormiddel van een herstelpunt.
 Op het moment is dit het meest effectieve programma, in het verwijderen van ingebouwde spyware in Windows 10.
 Het programma ontwikkeld en verbeterd een grote gemeenschap aan Windows 10 gebruikers. Sommigen helpen met het herschrijven van de code in een betere wijze, en sommigen helpen met het vertalen van het programma in andere talen.
