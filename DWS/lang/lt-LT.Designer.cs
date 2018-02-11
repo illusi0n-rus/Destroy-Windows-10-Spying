@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DWS_Lite.lang {
+namespace DWS.lang {
     using System;
     
     
@@ -19,7 +19,7 @@ namespace DWS_Lite.lang {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class lt_LT {
@@ -39,7 +39,7 @@ namespace DWS_Lite.lang {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS_Lite.lang.lt-LT", typeof(lt_LT).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS.lang.lt-LT", typeof(lt_LT).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ištrinti Windows 10 metro progr..
+        ///   Looks up a localized string similar to Verwijder alle Metro apps (win10).
         /// </summary>
         internal static string btnDeleteAllWindows10Apps {
             get {
@@ -70,7 +70,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ištrinti One Drive.
+        ///   Looks up a localized string similar to Verwijder OneDrive.
         /// </summary>
         internal static string btnDeleteOneDrive {
             get {
@@ -79,7 +79,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Atverti HOSTS filą redagavimui.
+        ///   Looks up a localized string similar to Open en bewerk het HOSTS bestand.
         /// </summary>
         internal static string btnOpenAndEditHosts {
             get {
@@ -88,7 +88,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Įgalinti profesionalų režimą.
+        ///   Looks up a localized string similar to Schakel de Proffesional Modus in.
         /// </summary>
         internal static string btnProfessionalMode {
             get {
@@ -97,7 +97,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Atkurti sistemą.
+        ///   Looks up a localized string similar to Herstel Systeem.
         /// </summary>
         internal static string btnRestoreSystem {
             get {
@@ -106,7 +106,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pridėti šnipinėjimo adresus į hosts failą ir užblokuoti juos Windows ugniasienėje.
+        ///   Looks up a localized string similar to Voeg spionage domeinen aan het Hosts bestand toe, en blokkeer in Windows Firewall.
         /// </summary>
         internal static string checkBoxAddToHosts {
             get {
@@ -115,7 +115,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sukurti sistemos atkūrimo tašką.
+        ///   Looks up a localized string similar to Maak een herstelpunt aan..
         /// </summary>
         internal static string checkBoxCreateSystemRestorePoint {
             get {
@@ -124,7 +124,8 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ištrinti GWX (Windows 10 atsisiuntimo priemonę).
+        ///   Looks up a localized string similar to 
+        ///Verwijder GWX.
         /// </summary>
         internal static string checkBoxDeleteGWX {
             get {
@@ -133,7 +134,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ištrinti Windows 10 metro programėles.
+        ///   Looks up a localized string similar to Verwijder Windows 10 Metro Apps.
         /// </summary>
         internal static string checkBoxDeleteWindows10Apps {
             get {
@@ -142,7 +143,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ištrinti Windows atnaujinimus su šnipinėjimu.
+        ///   Looks up a localized string similar to Verwijder spionage updates.
         /// </summary>
         internal static string checkBoxDeleteWindows78Updates {
             get {
@@ -151,7 +152,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Išjungti privatumo nustatymus.
+        ///   Looks up a localized string similar to Schakel privacy instellingen uit.
         /// </summary>
         internal static string checkBoxDisablePrivateSettings {
             get {
@@ -160,7 +161,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Išjungti Windows Defender.
+        ///   Looks up a localized string similar to Schakel Windows Defender uit.
         /// </summary>
         internal static string checkBoxDisableWindowsDefender {
             get {
@@ -169,7 +170,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ištrinti klavišų sekimą ir telemetriją.
+        ///   Looks up a localized string similar to Verwijder de Keylogger, en schakel Telematrie uit.
         /// </summary>
         internal static string checkBoxKeyLoggerAndTelemetry {
             get {
@@ -178,7 +179,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Padaryti Windows Photo Viewer numatyta paveikslėlių peržiūros programa.
+        ///   Looks up a localized string similar to Zet de standaard Windows Photo viewer.
         /// </summary>
         internal static string checkBoxSetDefaultPhoto {
             get {
@@ -187,7 +188,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Išjungti sekimo užduotis.
+        ///   Looks up a localized string similar to Schakel spionage services en taken uit.
         /// </summary>
         internal static string checkBoxSPYTasks {
             get {
@@ -196,7 +197,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Atlikta.
+        ///   Looks up a localized string similar to Voltooit!.
         /// </summary>
         internal static string Complete {
             get {
@@ -205,9 +206,9 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Atlikta!
-        ///Reikia perkrauti kompiuterį, kad būtų išjungtos visos sekimo programos.
-        ///Perkrauti dabar?.
+        ///   Looks up a localized string similar to Voltooit!
+        ///Opnieuw upstarten is verijst om alle spyware uit te kunnen schakelen.
+        ///Nu opnieuw opstarten?.
         /// </summary>
         internal static string CompleteMSG {
             get {
@@ -216,7 +217,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ištrinti.
+        ///   Looks up a localized string similar to Verwijder.
         /// </summary>
         internal static string Delete {
             get {
@@ -225,7 +226,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ištrinti programas.
+        ///   Looks up a localized string similar to Verwijder.
         /// </summary>
         internal static string DeleteApps {
             get {
@@ -234,7 +235,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Išjungti.
+        ///   Looks up a localized string similar to Uitschakelen.
         /// </summary>
         internal static string Disable {
             get {
@@ -243,7 +244,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Įjungti.
+        ///   Looks up a localized string similar to Inschakelen.
         /// </summary>
         internal static string Enable {
             get {
@@ -252,7 +253,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Klaida.
+        ///   Looks up a localized string similar to Fout!.
         /// </summary>
         internal static string Error {
             get {
@@ -261,9 +262,9 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Atlikta. Klaidos - {0}
-        ///Reikia perkrauti kompiuterį, kad būtų išjungtos visos sekimo programos.
-        ///Perkrauti dabar?.
+        ///   Looks up a localized string similar to Voltooit! Fouten - {0}
+        ///Opnieuw upstarten is verijst om alle spyware uit te kunnen schakelen.
+        ///Nu opnieuw opstarten?.
         /// </summary>
         internal static string ErrorMSG {
             get {
@@ -272,7 +273,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prašome nurodyti kelią iki msosync.exe failo. Jei Office 2016 yra įdiegta C diske numatytoje vietoje, paspauskite &quot;Atšaukti&quot;.
+        ///   Looks up a localized string similar to wat is het pad naar het bestand &quot;MSOSYNC.EXE&quot;. Als Microsoft Office 2016 is geïnstalleerd als standaard op schijf C:\, kies &quot;Annuleren&quot;..
         /// </summary>
         internal static string FindOffice16FileT {
             get {
@@ -281,7 +282,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Informacija.
+        ///   Looks up a localized string similar to Info.
         /// </summary>
         internal static string Info {
             get {
@@ -290,7 +291,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to METRO programos bus ištrintos visam laikui, be galimybės atšaukti pakeitimus..
+        ///   Looks up a localized string similar to Metro apps worden permanent verwijderd, herstel is niet mogelijk..
         /// </summary>
         internal static string labelInfoDeleteMetroApps {
             get {
@@ -299,7 +300,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nuorodos.
+        ///   Looks up a localized string similar to Links.
         /// </summary>
         internal static string Links {
             get {
@@ -308,7 +309,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Paspauskite Gerai ir palaukite 15 minučių..
+        ///   Looks up a localized string similar to Druk op OK en wacht 15 minuten.
         /// </summary>
         internal static string PressOkAndWait15 {
             get {
@@ -317,7 +318,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Klausimas.
+        ///   Looks up a localized string similar to Vraag.
         /// </summary>
         internal static string Question {
             get {
@@ -326,10 +327,11 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ši programa sunaikina šnipinėjimą Windows 7/8/8.1/10 operacinėse sistemose.
-        ///Programos kodas yra atviras, prieinamas github puslapyje.
-        ///Ši programa pašalina kai kuriuos telemetrijos elementus, kitus išjungta, išjungia Windows Defender, Cortana ir daug daugiau. Kadangi programa išjungia Windows Update, jūs negausite šnipinėjančios programinės įrangos atnaujinimų.
-        ///Metro programėlių funkcija yra naudinga, nes šios programėlės dirba fone, naudodamos jūsų kompiuterio resursus ir, kai kurios iš jų, net šnipinėja [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Dit Programma verwijderd de ingebouwde spyware in Windows 7, 8, 8.1, Server 2008-2012 R2 en 10.
+        ///Het programma is Open-Source, de broncode is te vinden op Github.
+        ///Dit programma verwijderd alle spyware die is ingebouwd door Microsoft in Windows. Sommige Elementen van telematrie worden verwijderd, en de andere worden uitgeschakeld.
+        ///Het programma kan Windows Update uitschakelen, hierdoor blijf je annoniem omdat je geen nieuwe updates ontvangt van spyware.
+        ///De verwijder Metro apps functie werkt zeer goed, Met [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ReadMeTextBox {
             get {
@@ -338,7 +340,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ar tikrai?.
+        ///   Looks up a localized string similar to Zeker?.
         /// </summary>
         internal static string Really {
             get {
@@ -347,7 +349,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pašalinti senas ugniasienės taisykles.
+        ///   Looks up a localized string similar to Verwijder oude DWS instellingen (firewall).
         /// </summary>
         internal static string RemoveAllOldFirewallRules {
             get {
@@ -356,7 +358,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pranešti apie klaidą.
+        ///   Looks up a localized string similar to Rapporteer een fout..
         /// </summary>
         internal static string ReportABug {
             get {
@@ -365,8 +367,8 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reikia perkrauti.
-        ///Perkrauti dabar?.
+        ///   Looks up a localized string similar to Opnieuw opstarten verijst.
+        ///Nu opnieuw opstarten?.
         /// </summary>
         internal static string Restart {
             get {
@@ -375,7 +377,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Apie.
+        ///   Looks up a localized string similar to Over.
         /// </summary>
         internal static string tabPageAbout {
             get {
@@ -384,7 +386,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pagrindinis.
+        ///   Looks up a localized string similar to Start.
         /// </summary>
         internal static string tabPageMain {
             get {
@@ -393,7 +395,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Perskaitykite.
+        ///   Looks up a localized string similar to ReadME.
         /// </summary>
         internal static string tabPageReadMe {
             get {
@@ -402,7 +404,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nustatymai.
+        ///   Looks up a localized string similar to Instellingen.
         /// </summary>
         internal static string tabPageSettings {
             get {
@@ -411,7 +413,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Įrankiai.
+        ///   Looks up a localized string similar to Extra functies.
         /// </summary>
         internal static string tabPageUtilites {
             get {
@@ -420,7 +422,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Perspėjimas.
+        ///   Looks up a localized string similar to Waarschuwing!.
         /// </summary>
         internal static string Warning {
             get {

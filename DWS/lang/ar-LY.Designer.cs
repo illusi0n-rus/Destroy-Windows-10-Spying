@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DWS_Lite.lang {
+namespace DWS.lang {
     using System;
     
     
@@ -19,7 +19,7 @@ namespace DWS_Lite.lang {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class ar_LY {
@@ -39,7 +39,7 @@ namespace DWS_Lite.lang {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS_Lite.lang.ar-LY", typeof(ar_LY).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS.lang.ar-LY", typeof(ar_LY).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -314,7 +314,7 @@ namespace DWS_Lite.lang {
         ///هذا البرنامج يدمر تماما التجسس. يزيل بعض عناصر القياس ويوقف الآخر، يعطل ويندوز ديفندر ، كورتانا، وأكثر من ذلك بكثير. كتعطيل تحديث ويندوز، و الذي يمنع الكشف عن هويتك، بمنع تلقي تحديثات تحتوي على برامج تجسس جديدة.
         ///حذف تطبيقات جيد، لأنها تعمل في الخلفية، وتلتهم الذاكرة، ومنها مايتجسس عليك.
         ///أيضا، البرنامج عديد من نطاقات مايكروسوفت التي تجمع البيانات، ويضيف معظم برامج التجسس لملف هوست.
-        ///البرنامج يقوم بهذا بشكل لا رجعة فيه [rest of string was truncated]&quot;;.
+        ///البرنامج يقوم بهذا بشكل لا رجع [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ReadMeTextBox {
             get {

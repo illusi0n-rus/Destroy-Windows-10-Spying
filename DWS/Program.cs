@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace DWS_Lite
+namespace DWS
 {
     static class Program
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DWS_Lite.lang {
+namespace DWS.lang {
     using System;
     
     
@@ -19,7 +19,7 @@ namespace DWS_Lite.lang {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class de_DE {
@@ -39,7 +39,7 @@ namespace DWS_Lite.lang {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS_Lite.lang.de-DE", typeof(de_DE).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS.lang.de-DE", typeof(de_DE).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -75,15 +75,6 @@ namespace DWS_Lite.lang {
         internal static string btnDeleteOneDrive {
             get {
                 return ResourceManager.GetString("btnDeleteOneDrive", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Löse Bildschirmdrehung.
-        /// </summary>
-        internal static string btnFixRotateScreen {
-            get {
-                return ResourceManager.GetString("btnFixRotateScreen", resourceCulture);
             }
         }
         

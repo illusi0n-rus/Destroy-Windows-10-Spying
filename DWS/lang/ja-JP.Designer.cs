@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DWS_Lite.lang {
+namespace DWS.lang {
     using System;
     
     
@@ -19,7 +19,7 @@ namespace DWS_Lite.lang {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class ja_JP {
@@ -39,7 +39,7 @@ namespace DWS_Lite.lang {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS_Lite.lang.ja-JP", typeof(ja_JP).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS.lang.ja-JP", typeof(ja_JP).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 全ての Windows 10 Metroアプリを削除.
+        ///   Looks up a localized string similar to 全ての Windows 10 Metroアプリ削除.
         /// </summary>
         internal static string btnDeleteAllWindows10Apps {
             get {
@@ -142,7 +142,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Windows 10 metroアプリを削除する.
+        ///   Looks up a localized string similar to Windows 10 Metroアプリを削除する.
         /// </summary>
         internal static string checkBoxDeleteWindows10Apps {
             get {
@@ -350,7 +350,7 @@ namespace DWS_Lite.lang {
         ///Metroアプリを削除するのは非常に良い、なぜなら、それらは裏で動き、メモリを消費し、それらの幾つかはあなたをスパイしています。
         ///また、DWSは沢山の Microsoftの IPアドレスをブロックしてデータの収集を防ぎます。hostsファイルにほぼ全てのスパイ活動のアドレスを追加します。
         ///殆どのプログラムは不可逆的であり、システムの復元ポイントでさえも変更を元に戻す事は出来ません。
-        ///DWSは現時点で一番効果的なプログラムです。DWSは開発中であり、Windows10のユーザーコミュニティによって向上中である。いくつかの助けが DWSのプログラムコードを更に生 [rest of string was truncated]&quot;;.
+        ///DWSは現時点で一番効果的なプログラムです。DWSは開発中であり、Windows10のユーザーコミュニティによって向上中である。いくつかの助けが DWSのプログラムコ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ReadMeTextBox {
             get {

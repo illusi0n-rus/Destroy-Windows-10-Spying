@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DWS_Lite.lang {
+namespace DWS.lang {
     using System;
     
     
@@ -19,7 +19,7 @@ namespace DWS_Lite.lang {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class tr_TR {
@@ -39,7 +39,7 @@ namespace DWS_Lite.lang {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS_Lite.lang.tr-TR", typeof(tr_TR).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS.lang.tr-TR", typeof(tr_TR).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -307,7 +307,7 @@ namespace DWS_Lite.lang {
         /// <summary>
         ///   Looks up a localized string similar to Bu Yazılım Windows 7/8/8.1/10&apos;daki casus yazılımları temizler .
         ///Program Github ile yapılmıştır ve açık kaynak kodludur..Bu Program Takip Edilmeyi Tamamen Yok eder. Telemetriden bazı şeyleri siler ve etkisizleştirir,Windows Defender&apos;ı, Cortana&apos;yı, ve daha bir çok şeyi siler. Programı Windows Update&apos;i devredışı bırakarak takip edilme riskinizi ortadan kaldırır.
-        ///Metro uygulamaları silmek gerçekten faydalı çünkü arkaplanda çalışarak belleğinizi yorar. ve tabiki takip edilmenize olanak sağlar.Ayrıca program birç [rest of string was truncated]&quot;;.
+        ///Metro uygulamaları silmek gerçekten faydalı çünkü arkaplanda çalışarak belleğinizi yorar. ve tabiki takip edilmenize olanak sağlar.Ayrıca program bi [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ReadMeTextBox {
             get {

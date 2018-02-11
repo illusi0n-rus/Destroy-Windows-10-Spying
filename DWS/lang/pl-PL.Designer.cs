@@ -8,8 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DWS_Lite.lang {
-    
+namespace DWS.lang {
     using System;
     
     
@@ -20,7 +19,7 @@ namespace DWS_Lite.lang {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class pl_PL {
@@ -40,7 +39,7 @@ namespace DWS_Lite.lang {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS_Lite.lang.pl-PL", typeof(pl_PL).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS.lang.pl-PL", typeof(pl_PL).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -76,6 +75,15 @@ namespace DWS_Lite.lang {
         internal static string btnDeleteOneDrive {
             get {
                 return ResourceManager.GetString("btnDeleteOneDrive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Napraw funkcję obracania ekranu.
+        /// </summary>
+        internal static string btnFixRotateScreen {
+            get {
+                return ResourceManager.GetString("btnFixRotateScreen", resourceCulture);
             }
         }
         
@@ -125,11 +133,29 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Usuń GWX.
+        /// </summary>
+        internal static string checkBoxDeleteGWX {
+            get {
+                return ResourceManager.GetString("checkBoxDeleteGWX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Usuń aplikacje Metro Windows 10.
         /// </summary>
         internal static string checkBoxDeleteWindows10Apps {
             get {
                 return ResourceManager.GetString("checkBoxDeleteWindows10Apps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odinstaluj szpiegujące aktualizacje.
+        /// </summary>
+        internal static string checkBoxDeleteWindows78Updates {
+            get {
+                return ResourceManager.GetString("checkBoxDeleteWindows78Updates", resourceCulture);
             }
         }
         
@@ -152,7 +178,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Usuń keylogger i telemetrię.
+        ///   Looks up a localized string similar to Usuń keyloggera i telemetrię.
         /// </summary>
         internal static string checkBoxKeyLoggerAndTelemetry {
             get {
@@ -281,6 +307,15 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Aktualizacje do odinstalowania:.
+        /// </summary>
+        internal static string labelUninstallUpdates {
+            get {
+                return ResourceManager.GetString("labelUninstallUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Linki.
         /// </summary>
         internal static string Links {
@@ -309,9 +344,8 @@ namespace DWS_Lite.lang {
         
         /// <summary>
         ///   Looks up a localized string similar to Dzięki tej aplikacji możesz usunąć oprogramowanie szpiegujące w systemach Windows 7/8/8.1/10.
-        ///Jest to program o otwartym źródle, które jest dostępne na Github.
-        ///Usuwane są elementy telemetrii, wyłączany jest Windows Defender, Cortana, a także wiele innych niepożądanych części systemu. Aplikacja wyłącza także Windows Update, co pozwala ci na pozostanie anonimowym. Kolejną korzyścią jest nieotrzymywanie aktualizacji wbudowanego oprogramowania szpiegującego.
-        ///Jedną z funkcji aplikacji jest usuwanie aplikacji Met [rest of string was truncated]&quot;;.
+        ///Usuwa ona elementy telemetrii, wyłącza Windows Defender, Cortanę, a także wiele innych niepożądanych części systemu. Dezaktywuje również Windows Update, co uniemożliwi otrzymywanie aktualizacji wbudowanego oprogramowania szpiegującego.
+        ///Za pomocą tego narzędzia można również pozbyć się aplikacji Metro. Jest to bardzo przydatna funkcja, ponieważ takie aplikacje działają w tle i niepotrzebnie marnują pamięć, a niekt [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ReadMeTextBox {
             get {
@@ -375,7 +409,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opis programu.
+        ///   Looks up a localized string similar to Do przeczytania.
         /// </summary>
         internal static string tabPageReadMe {
             get {
@@ -401,35 +435,6 @@ namespace DWS_Lite.lang {
             }
         }
         
-		/// <summary>
-		///   Looks up a localized string similar to Delete GWX.
-		/// </summary>
-		internal static string checkBoxDeleteGWX {
-			get {
-				return ResourceManager.GetString("checkBoxDeleteGWX", resourceCulture);
-
-			}
-		}
-
-
-		/// <summary>
-		///   Looks up a localized string similar to Delete spying updates..
-		/// </summary>
-		internal static string checkBoxDeleteWindows78Updates {
-			get {
-				return ResourceManager.GetString("checkBoxDeleteWindows78Updates", resourceCulture);
-			}
-		}
-	
-        /// <summary>
-        ///   Looks up a localized string similar to Uninstall updates:.
- 	/// </summary>
-        internal static string labelUninstallUpdates {
-            get {
-                return ResourceManager.GetString("labelUninstallUpdates", resourceCulture);
-            }
-        }
-        
         /// <summary>
         ///   Looks up a localized string similar to Ostrzeżenie.
         /// </summary>
@@ -438,15 +443,5 @@ namespace DWS_Lite.lang {
                 return ResourceManager.GetString("Warning", resourceCulture);
             }
         }
-        
-		/// <summary>
-		///   Looks up a localized string similar to Rozwiąż problemy z obracaniem ekranu.
-		/// </summary>
-		internal static string btnFixRotateScreen {
-			get {
-				return ResourceManager.GetString("btnFixRotateScreen", resourceCulture);
-			}
-		}
-        
     }
 }

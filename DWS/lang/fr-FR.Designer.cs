@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DWS_Lite.lang {
+namespace DWS.lang {
     using System;
     
     
@@ -19,7 +19,7 @@ namespace DWS_Lite.lang {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class fr_FR {
@@ -39,7 +39,7 @@ namespace DWS_Lite.lang {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS_Lite.lang.fr-FR", typeof(fr_FR).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS.lang.fr-FR", typeof(fr_FR).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -79,6 +79,15 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Corriger la rotation de l&apos;écran.
+        /// </summary>
+        internal static string btnFixRotateScreen {
+            get {
+                return ResourceManager.GetString("btnFixRotateScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ouvrir et Modifier le fichier HOSTS.
         /// </summary>
         internal static string btnOpenAndEditHosts {
@@ -106,7 +115,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ajouter des domaines espion au fichier HOSTS et bloquer les IP dans le pare-feu Windows.
+        ///   Looks up a localized string similar to Bloquer les domaines et les IP espions..
         /// </summary>
         internal static string checkBoxAddToHosts {
             get {
@@ -124,11 +133,29 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enlever le GWX.
+        /// </summary>
+        internal static string checkBoxDeleteGWX {
+            get {
+                return ResourceManager.GetString("checkBoxDeleteGWX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Supprimer les applications Métro de Windows 10.
         /// </summary>
         internal static string checkBoxDeleteWindows10Apps {
             get {
                 return ResourceManager.GetString("checkBoxDeleteWindows10Apps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supprimer les mises à jour espionnes..
+        /// </summary>
+        internal static string checkBoxDeleteWindows78Updates {
+            get {
+                return ResourceManager.GetString("checkBoxDeleteWindows78Updates", resourceCulture);
             }
         }
         
@@ -187,7 +214,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fini!
+        ///   Looks up a localized string similar to Fini !
         ///Un redémarrage est nécessaire pour désactiver tous les logiciels espions.
         ///Redémarrer maintenant ?.
         /// </summary>
@@ -212,15 +239,6 @@ namespace DWS_Lite.lang {
         internal static string DeleteApps {
             get {
                 return ResourceManager.GetString("DeleteApps", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Détruire les Espions de Windows 10.
-        /// </summary>
-        internal static string DestroyWindowsSpying {
-            get {
-                return ResourceManager.GetString("DestroyWindowsSpying", resourceCulture);
             }
         }
         
@@ -253,7 +271,7 @@ namespace DWS_Lite.lang {
         
         /// <summary>
         ///   Looks up a localized string similar to Fini avec des erreurs - {0}
-        ///Un redémarrage est nécessaire pour désactiver tous les logiciels espions.
+        ///Un redémarrage est nécessaire pour désactiver les logiciels espions.
         ///Redémarrer maintenant ?.
         /// </summary>
         internal static string ErrorMSG {
@@ -290,6 +308,15 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Désinstaller les mises à jour :.
+        /// </summary>
+        internal static string labelUninstallUpdates {
+            get {
+                return ResourceManager.GetString("labelUninstallUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Liens.
         /// </summary>
         internal static string Links {
@@ -320,7 +347,7 @@ namespace DWS_Lite.lang {
         ///   Looks up a localized string similar to Ce logiciel supprime les espions de Windows 7/8/8.1/10.
         ///Le logiciel est open source, son code source est disponible sur GitHub.
         ///Ce logiciel supprime tout l&apos;espionnage de Windows. Il enlève pas mal d&apos;éléments dont la télémétrie et en désactive d&apos;autres, par exemple il désactive Windows Defender, Cortana, et plus encore. Comme le logiciel désactive Windows Update il vous permet de ne plus envoyer de données et de ne plus avoir les nouveaux spyware de Windows.
-        ///La suppression des applications Metro est très bie [rest of string was truncated]&quot;;.
+        ///La suppression des applications Metro est très  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ReadMeTextBox {
             get {

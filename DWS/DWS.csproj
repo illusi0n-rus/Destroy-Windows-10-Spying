@@ -7,8 +7,8 @@
     <ProjectGuid>{E350572A-2FB3-4435-86B0-12F2215A1727}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DWS_Lite</RootNamespace>
-    <AssemblyName>DWS_Lite</AssemblyName>
+    <RootNamespace>DWS</RootNamespace>
+    <AssemblyName>DWS</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

@@ -139,4 +139,64 @@
   <data name="minimize2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\minimize2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="MainDwsForm_ChangeLanguage__0__UAC" xml:space="preserve">
+    <value>{0} UAC</value>
+  </data>
+  <data name="MainDwsForm_ChangeLanguage__0__Office_2016_Telemetry" xml:space="preserve">
+    <value>{0} Office 2016 Telemetry</value>
+  </data>
+  <data name="MainDwsForm_ChangeLanguage__0__Windows_Update" xml:space="preserve">
+    <value>{0} Windows Update</value>
+  </data>
+  <data name="MainDwsForm_ChangeLanguage__0__Builder_3D" xml:space="preserve">
+    <value>{0} Builder 3D</value>
+  </data>
+  <data name="MainDwsForm_ChangeLanguage__0__Camera" xml:space="preserve">
+    <value>{0} Camera</value>
+  </data>
+  <data name="MainDwsForm_ChangeLanguage__0__Mail__Calendar__Maps" xml:space="preserve">
+    <value>{0} Mail, Calendar, Maps</value>
+  </data>
+  <data name="MainDwsForm_ChangeLanguage__0__Money__Sports__News__Weather" xml:space="preserve">
+    <value>{0} Money, Sports, News, Weather</value>
+  </data>
+  <data name="MainDwsForm_ChangeLanguage__0__Groove_Music__Film_TV" xml:space="preserve">
+    <value>{0} Groove Music, Film TV</value>
+  </data>
+  <data name="MainDwsForm_ChangeLanguage__0__People__OneNote" xml:space="preserve">
+    <value>{0} People, OneNote</value>
+  </data>
+  <data name="MainDwsForm_ChangeLanguage__0__Phone_Companion" xml:space="preserve">
+    <value>{0} Phone Companion</value>
+  </data>
+  <data name="MainDwsForm_ChangeLanguage__0__Photos" xml:space="preserve">
+    <value>{0} Photos</value>
+  </data>
+  <data name="MainDwsForm_ChangeLanguage__0__Solitaire_Collection" xml:space="preserve">
+    <value>{0} Solitaire Collection</value>
+  </data>
+  <data name="MainDwsForm_ChangeLanguage__0__Voice_Recorder" xml:space="preserve">
+    <value>{0} Voice Recorder</value>
+  </data>
+  <data name="MainDwsForm_ChangeLanguage__0__XBOX" xml:space="preserve">
+    <value>{0} XBOX</value>
+  </data>
+  <data name="MainDwsForm_SetCompleteText_Destroy_Windows_10_Spying___errors___0_" xml:space="preserve">
+    <value>Destroy Windows 10 Spying - errors: {0}</value>
+  </data>
+  <data name="MainDwsForm_SetCompleteText_Destroy_Windows_10_Spying____0__" xml:space="preserve">
+    <value>Destroy Windows 10 Spying - {0}!</value>
+  </data>
+  <data name="MainDwsForm_AutoUpdate_" xml:space="preserve">
+    <value>Error check update.
+Message: {0}</value>
+  </data>
+  <data name="MainDwsForm_MainDwsForm_v_0_" xml:space="preserve">
+    <value>v{0}</value>
+  </data>
+  <data name="MainDwsForm_AutoUpdate1_" xml:space="preserve">
+    <value>New version avalible.
+
+Version: {0} .</value>
+  </data>
 </root>

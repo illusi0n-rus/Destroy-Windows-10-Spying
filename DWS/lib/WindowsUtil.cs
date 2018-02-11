@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Microsoft.Win32;
 
-namespace DWS_Lite.lib
+namespace DWS.lib
 {
     internal class WindowsUtil
     {
@@ -11,7 +11,7 @@ namespace DWS_Lite.lib
             var rkSubKey = Registry.LocalMachine.OpenSubKey(subKey);
             if (rkSubKey == null)
             {
-                MessageBox.Show(string.Format(@"Error while reading registry key: {0}\{1} does not exist!", subKey, keyName), @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($@"Error while reading registry key: {subKey}\{keyName} does not exist!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
             try
@@ -23,7 +23,8 @@ namespace DWS_Lite.lib
             }
             catch (Exception ex)   //This exception is thrown
             {
-                MessageBox.Show(string.Format("Error while reading registry key: {0} param: {1}. ErrorMessage: {2}", subKey, keyName, ex.Message), @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    $@"Error while reading registry key: {subKey} param: {keyName}. ErrorMessage: {ex.Message}", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 rkSubKey.Close();
                 return null;
             }

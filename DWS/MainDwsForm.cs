@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DWS.lang;
+using DWS.lib;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -14,12 +17,9 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using DWS_Lite.lang;
-using DWS_Lite.lib;
-using DWS_Lite.Properties;
-using Microsoft.Win32;
+using DWS.Properties;
 
-namespace DWS_Lite
+namespace DWS
 {
     public sealed partial class MainDwsForm : Form
     {
@@ -42,7 +42,6 @@ namespace DWS_Lite
 
         public MainDwsForm(string[] args)
         {
-
             InitializeComponent();
             DoubleBuffered = true;
             // Re create log file
@@ -60,7 +59,7 @@ namespace DWS_Lite
             {
                 Icon = Icon.ExtractAssociatedIcon(System.Reflection.Assembly.GetExecutingAssembly().Location);
                 Text +=
-                    $"v{FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion}";
+                    string.Format(Resources.MainDwsForm_MainDwsForm_v_0_, FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion);
             }
             catch
             {
@@ -78,8 +77,8 @@ namespace DWS_Lite
             try
             {
                 var assemblyInfo =
-                    new WebClient().DownloadString(
-                        "http://raw.githubusercontent.com/Nummer/Destroy-Windows-10-Spying/master/DWS/Properties/AssemblyInfo.cs");
+                        new WebClient().DownloadString(
+                    $"http://raw.githubusercontent.com/Nummer/Destroy-Windows-10-Spying/master/DWS/Properties/AssemblyInfo.cs?rnd={new Random().Next(0, 9999999)}");
                 var readText = assemblyInfo.Split('\n');
                 var versionInfoLines = readText.Where(t => t.Contains("[assembly: AssemblyFileVersion"));
                 var version = "";
@@ -87,27 +86,23 @@ namespace DWS_Lite
                 {
                     version = item.Substring(item.IndexOf('(') + 2, item.LastIndexOf(')') - item.IndexOf('(') - 3);
                 }
-                if (version !=
-                    FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location)
-                        .FileVersion)
-                {
-                    if (MessageBox.Show($"New version avalible.\n\nVersion: {version} .\n\nDownload now?", @"Update",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        Process.Start("https://github.com/Nummer/Destroy-Windows-10-Spying/releases/latest");
-                        Process.GetCurrentProcess().Kill();
-                    }
-                }
+                if (version == FileVersionInfo
+                        .GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location)
+                        .FileVersion) return;
+                Invoke(new MethodInvoker(() => { Enabled = false; }));
+                MessageBox.Show(string.Format(Resources.MainDwsForm_AutoUpdate1_, version), @"Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Process.Start("https://github.com/Nummer/Destroy-Windows-10-Spying/releases/latest");
+                Process.GetCurrentProcess().Kill();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error check update.\nMessage: {ex.Message}", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format(Resources.MainDwsForm_AutoUpdate_, ex.Message), @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         public override string Text
         {
-            get { return base.Text; }
+            get => base.Text;
             set
             {
                 base.Text = value;
@@ -430,6 +425,13 @@ namespace DWS_Lite
             new Thread(DestroyWindowsSpyingMainThread).Start();
         }
 
+        private void DisableSpyServices(string serviceName)
+        {
+            RunCmd($"/c net stop {serviceName}");
+            ProcStartargs("powershell", $"-command \"Set-Service -Name {serviceName} -StartupType Disabled\"");
+            _OutPut($"Disable {serviceName} service");
+        }
+
         private void DestroyWindowsSpyingMainThread()
         {
             if (checkBoxCreateSystemRestorePoint.Checked)
@@ -462,6 +464,51 @@ namespace DWS_Lite
                     "/c reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\" /v \"AllowCortana\" /t REG_DWORD /d 0 /f ");
                     // disable Cortana;
                 _OutPut("Cortana disable #1");
+
+                var servicesList = new List<string>(new[]
+                {
+                    "DcpSvc", // Data Collection and Publishing Service
+                    "diagnosticshub.standardcollector.service", // Microsoft (R) Diagnostics Hub Standard Collector Service
+                    "DiagTrack", // Diagnostics Tracking Service
+                    "SensrSvc", // Monitors Various Sensors
+                    "dmwappushservice", // WAP Push Message Routing Service
+                    "lfsvc", // Geolocation Service
+                    "MapsBroker", // Downloaded Maps Manager
+                    "NetTcpPortSharing", // Net.Tcp Port Sharing Service
+                    "RemoteAccess", // Routing and Remote Access
+                    "RemoteRegistry", // Remote Registry
+                    "SharedAccess", // Internet Connection Sharing (ICS)
+                    "TrkWks", // Distributed Link Tracking Client
+                    "WbioSrvc", // Windows Biometric Service
+                    "WMPNetworkSvc", // Windows Media Player Network Sharing Service
+                    "WSearch", // Windows Search
+                    "XblAuthManager", // Xbox Live Auth Manager
+                    "XblGameSave", // Xbox Live Game Save Service
+                    "XboxNetApiSvc", // Xbox Live Networking Service
+                    "HomeGroupListener", // HomeGroup Listener
+                    "HomeGroupProvider", // HomeGroup Provider
+                    "bthserv", // Bluetooth Support Service
+                    "wscsvc", // Security Center Service
+                    "WlanSvc", // WLAN AutoConfig
+                    "OneSyncSvc", // Sync Host Service
+                    "AeLookupSvc", // Application Experience Service
+                    "PcaSvc", // Program Compatibility Assistant
+                    "WinHttpAutoProxySvc", // WinHTTP Web Proxy Auto-Discovery
+                    "UPNPHOST", // Universal Plug & Play Host
+                    "ERSVC", // Error Reporting Service
+                    "WERSVC", // Windows Error Reporting Service
+                    "SSDPSRV", // SSDP Discovery Service
+                    "CDPSvc", // Connected Devices Platform Service
+                    "DsSvc", // Data Sharing Service
+                    "DcpSvc", // Data Collection and Publishing Service
+                    "lfsvc" // Geolocation service
+                });
+                foreach (var service in servicesList)
+                {
+                    DisableSpyServices(service);
+                }
+
+
             }
             Progressbaradd(15); //25
             if (checkBoxAddToHosts.Checked)
@@ -676,7 +723,7 @@ namespace DWS_Lite
             {
                 if (_fatalErrors == 0)
                 {
-                    StatusCommandsLable.Text = $"Destroy Windows 10 Spying - {GetTranslateText("Complete")}!";
+                    StatusCommandsLable.Text = string.Format(Resources.MainDwsForm_SetCompleteText_Destroy_Windows_10_Spying____0__, GetTranslateText("Complete"));
                     StatusCommandsLable.ForeColor = Color.DarkGreen;
                     if (MessageBox.Show(GetTranslateText("CompleteMSG"), GetTranslateText("Info"),
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
@@ -685,7 +732,7 @@ namespace DWS_Lite
                 }
                 else
                 {
-                    StatusCommandsLable.Text = $"Destroy Windows 10 Spying - errors: {_fatalErrors}";
+                    StatusCommandsLable.Text = string.Format(Resources.MainDwsForm_SetCompleteText_Destroy_Windows_10_Spying___errors___0_, _fatalErrors);
                     StatusCommandsLable.ForeColor = Color.Red;
                     try
                     {
@@ -774,13 +821,65 @@ namespace DWS_Lite
         {
             try
             {
-                string[] hostsdomains =
-                {
-                    "a.ads1.msn.com",
-                    "a.ads2.msads.net",
-                    "a.ads2.msn.com",
-                    "a.rad.msn.com",
+                string[] hostsdomains = {
+                    "answers.microsoft.com",
+                    "apps.skype.com",
+                    "ars.smartscreen.microsoft.com",
+                    "az361816.vo.msecnd.net",
+                    "az512334.vo.msecnd.net",
+                    "blob.weather.microsoft.com",
+                    "candycrushsoda.king.com",
+                    "cdn.content.prod.cms.msn.com",
+                    "cdn.onenote.net",
+                    "choice.microsoft.com",
+                    "choice.microsoft.com.nsatc.net",
+                    "client.wns.windows.com",
+                    "client-s.gateway.messenger.live.com",
+                    "clientconfig.passport.net",
+                    "deploy.static.akamaitechnologies.com",
+                    "device.auth.xboxlive.com",
+                    "dmd.metaservices.microsoft.com",
+                    "dns.msftncsi.com",
+                    "feedback.microsoft-hohm.com",
+                    "feedback.search.microsoft.com",
+                    "feedback.windows.com",
+                    "g.live.com",
+                    "img-s-msn-com.akamaized.net",
+                    "insiderppe.cloudapp.net",
+                    "licensing.mp.microsoft.com",
+                    "login.live.com",
+                    "m.hotmail.com",
+                    "mediaredirect.microsoft.com",
+                    "msftncsi.com",
+                    "officeclient.microsoft.com",
+                    "oneclient.sfx.ms",
+                    "pricelist.skype.com",
+                    "pti.store.microsoft.com",
+                    "query.prod.cms.rt.microsoft.com",
+                    "register.cdpcs.microsoft.com",
+                    "s.gateway.messenger.live.com",
+                    "s0.2mdn.net",
+                    "sO.2mdn.net",
+                    "search.msn.com",
+                    "settings-ssl.xboxlive.com",
+                    "static.2mdn.net",
+                    "storage.live.com",
+                    "store-images.s-microsoft.com",
+                    "storeedgefd.dsx.mp.microsoft.com",
+                    "support.microsoft.com",
+                    "tile-service.weather.microsoft.com",
+                    "time.windows.com",
+                    "tk2.plt.msn.com",
+                    "ui.skype.com",
+                    "urs.smartscreen.microsoft.com",
+                    "wdcp.microsoft.com",
+                    "wdcpalt.microsoft.com",
+                    "win10-trt.msedge.net",
+                    "wscont.apps.microsoft.com",
+                    "www.msftconnecttest.com",
+                    "www.msftncsi.com",
                     "a-0001.a-msedge.net",
+                    "a-0001.dc-msedge.net",
                     "a-0002.a-msedge.net",
                     "a-0003.a-msedge.net",
                     "a-0004.a-msedge.net",
@@ -789,8 +888,16 @@ namespace DWS_Lite
                     "a-0007.a-msedge.net",
                     "a-0008.a-msedge.net",
                     "a-0009.a-msedge.net",
+                    "a-0010.a-msedge.net",
+                    "a-0011.a-msedge.net",
+                    "a-0012.a-msedge.net",
+                    "a-msedge.net",
+                    "a.ads1.msn.com",
+                    "a.ads2.msads.net",
+                    "a.ads2.msn.com",
+                    "a.rad.msn.com",
                     "ac3.msn.com",
-                    "ad.doubleclick.net",
+                    "activity.windows.com",
                     "adnexus.net",
                     "adnxs.com",
                     "ads.msn.com",
@@ -798,104 +905,427 @@ namespace DWS_Lite
                     "ads1.msn.com",
                     "aidps.atdmt.com",
                     "aka-cdn-ns.adtech.de",
-                    "a-msedge.net",
-                    "apps.skype.com",
-                    "az361816.vo.msecnd.net",
-                    "az512334.vo.msecnd.net",
+                    "array101-prod.do.dsp.mp.microsoft.com",
+                    "array102-prod.do.dsp.mp.microsoft.com",
+                    "array103-prod.do.dsp.mp.microsoft.com",
+                    "array104-prod.do.dsp.mp.microsoft.com",
+                    "array201-prod.do.dsp.mp.microsoft.com",
+                    "array202-prod.do.dsp.mp.microsoft.com",
+                    "array203-prod.do.dsp.mp.microsoft.com",
+                    "array204-prod.do.dsp.mp.microsoft.com",
+                    "array401-prod.do.dsp.mp.microsoft.com",
+                    "array402-prod.do.dsp.mp.microsoft.com",
+                    "array403-prod.do.dsp.mp.microsoft.com",
+                    "array404-prod.do.dsp.mp.microsoft.com",
+                    "array405-prod.do.dsp.mp.microsoft.com",
+                    "array406-prod.do.dsp.mp.microsoft.com",
+                    "array407-prod.do.dsp.mp.microsoft.com",
+                    "array408-prod.do.dsp.mp.microsoft.com",
                     "b.ads1.msn.com",
                     "b.ads2.msads.net",
                     "b.rad.msn.com",
+                    "bingads.microsoft.com",
+                    "bl3301-a.1drv.com",
+                    "bl3301-c.1drv.com",
+                    "bl3301-g.1drv.com",
+                    "bn1304-e.1drv.com",
+                    "bn1306-a.1drv.com",
+                    "bn1306-e.1drv.com",
+                    "bn1306-g.1drv.com",
+                    "bn2b-cor001.api.p001.1drv.com",
+                    "bn2b-cor002.api.p001.1drv.com",
+                    "bn3p-cor001.api.p001.1drv.com",
+                    "bn2b-cor003.api.p001.1drv.com",
+                    "bn2b-cor004.api.p001.1drv.com",
+                    "bn2wns1.wns.windows.com",
+                    "bn3sch020022328.wns.windows.com",
+                    "by3301-a.1drv.com",
+                    "by3301-c.1drv.com",
+                    "by3301-e.1drv.com",
                     "bs.serving-sys.com",
                     "c.atdmt.com",
                     "c.msn.com",
+                    "c-0001.dc-msedge.net",
                     "ca.telemetry.microsoft.com",
                     "cache.datamart.windows.com",
                     "cdn.atdmt.com",
+                    "cds1204.lon.llnw.net",
+                    "cds1293.lon.llnw.net",
+                    "cds20417.lcy.llnw.net",
+                    "cds20431.lcy.llnw.net",
+                    "cds20450.lcy.llnw.net",
+                    "cds20457.lcy.llnw.net",
+                    "cds20475.lcy.llnw.net",
+                    "cds21244.lon.llnw.net",
                     "cds26.ams9.msecn.net",
-                    "choice.microsoft.com",
-                    "choice.microsoft.com.nsatc.net",
+                    "cds425.lcy.llnw.net",
+                    "cds459.lcy.llnw.net",
+                    "cds494.lcy.llnw.net",
+                    "cds965.lon.llnw.net",
+                    "ch1-cor001.api.p001.1drv.com",
+                    "ch1-cor002.api.p001.1drv.com",
+                    "ch3301-c.1drv.com",
+                    "ch3301-e.1drv.com",
+                    "ch3301-g.1drv.com",
+                    "ch3302-c.1drv.com",
+                    "ch3302-e.1drv.com",
                     "compatexchange.cloudapp.net",
+                    "compatexchange1.trafficmanager.net",
+                    "continuum.dds.microsoft.com",
                     "corp.sts.microsoft.com",
                     "corpext.msitadfs.glbdns2.microsoft.com",
+                    "cp101-prod.do.dsp.mp.microsoft.com",
+                    "cp201-prod.do.dsp.mp.microsoft.com",
+                    "cp401-prod.do.dsp.mp.microsoft.com",
                     "cs1.wpc.v0cdn.net",
                     "db3aqu.atdmt.com",
                     "db3wns2011111.wns.windows.com",
+                    "db5.wns.windows.com",
+                    "db5sch101100122.wns.windows.com",
+                    "db5sch101100127.wns.windows.com",
+                    "db5sch101100831.wns.windows.com",
+                    "db5sch101100835.wns.windows.com",
+                    "db5sch101100917.wns.windows.com",
+                    "db5sch101100925.wns.windows.com",
+                    "db5sch101100928.wns.windows.com",
+                    "db5sch101100938.wns.windows.com",
+                    "db5sch101101001.wns.windows.com",
+                    "db5sch101101022.wns.windows.com",
+                    "db5sch101101024.wns.windows.com",
+                    "db5sch101101031.wns.windows.com",
+                    "db5sch101101034.wns.windows.com",
+                    "db5sch101101042.wns.windows.com",
+                    "db5sch101101044.wns.windows.com",
+                    "db5sch101101122.wns.windows.com",
+                    "db5sch101101123.wns.windows.com",
+                    "db5sch101101125.wns.windows.com",
+                    "db5sch101101128.wns.windows.com",
+                    "db5sch101101129.wns.windows.com",
+                    "db5sch101101133.wns.windows.com",
+                    "db5sch101101145.wns.windows.com",
+                    "db5sch101101209.wns.windows.com",
+                    "db5sch101101221.wns.windows.com",
+                    "db5sch101101228.wns.windows.com",
+                    "db5sch101101231.wns.windows.com",
+                    "db5sch101101237.wns.windows.com",
+                    "db5sch101101317.wns.windows.com",
+                    "db5sch101101324.wns.windows.com",
+                    "db5sch101101329.wns.windows.com",
+                    "db5sch101101333.wns.windows.com",
+                    "db5sch101101334.wns.windows.com",
+                    "db5sch101101338.wns.windows.com",
+                    "db5sch101101419.wns.windows.com",
+                    "db5sch101101424.wns.windows.com",
+                    "db5sch101101426.wns.windows.com",
+                    "db5sch101101427.wns.windows.com",
+                    "db5sch101101430.wns.windows.com",
+                    "db5sch101101445.wns.windows.com",
+                    "db5sch101101511.wns.windows.com",
+                    "db5sch101101519.wns.windows.com",
+                    "db5sch101101529.wns.windows.com",
+                    "db5sch101101535.wns.windows.com",
+                    "db5sch101101541.wns.windows.com",
+                    "db5sch101101543.wns.windows.com",
+                    "db5sch101101608.wns.windows.com",
+                    "db5sch101101618.wns.windows.com",
+                    "db5sch101101629.wns.windows.com",
+                    "db5sch101101631.wns.windows.com",
+                    "db5sch101101633.wns.windows.com",
+                    "db5sch101101640.wns.windows.com",
+                    "db5sch101101711.wns.windows.com",
+                    "db5sch101101722.wns.windows.com",
+                    "db5sch101101739.wns.windows.com",
+                    "db5sch101101745.wns.windows.com",
+                    "db5sch101101813.wns.windows.com",
+                    "db5sch101101820.wns.windows.com",
+                    "db5sch101101826.wns.windows.com",
+                    "db5sch101101835.wns.windows.com",
+                    "db5sch101101837.wns.windows.com",
+                    "db5sch101101844.wns.windows.com",
+                    "db5sch101101907.wns.windows.com",
+                    "db5sch101101914.wns.windows.com",
+                    "db5sch101101929.wns.windows.com",
+                    "db5sch101101939.wns.windows.com",
+                    "db5sch101101941.wns.windows.com",
+                    "db5sch101102015.wns.windows.com",
+                    "db5sch101102017.wns.windows.com",
+                    "db5sch101102019.wns.windows.com",
+                    "db5sch101102023.wns.windows.com",
+                    "db5sch101102025.wns.windows.com",
+                    "db5sch101102032.wns.windows.com",
+                    "db5sch101102033.wns.windows.com",
+                    "db5sch101110108.wns.windows.com",
+                    "db5sch101110109.wns.windows.com",
+                    "db5sch101110114.wns.windows.com",
+                    "db5sch101110135.wns.windows.com",
+                    "db5sch101110142.wns.windows.com",
+                    "db5sch101110204.wns.windows.com",
+                    "db5sch101110206.wns.windows.com",
+                    "db5sch101110214.wns.windows.com",
+                    "db5sch101110225.wns.windows.com",
+                    "db5sch101110232.wns.windows.com",
+                    "db5sch101110245.wns.windows.com",
+                    "db5sch101110315.wns.windows.com",
+                    "db5sch101110323.wns.windows.com",
+                    "db5sch101110325.wns.windows.com",
+                    "db5sch101110328.wns.windows.com",
+                    "db5sch101110331.wns.windows.com",
+                    "db5sch101110341.wns.windows.com",
+                    "db5sch101110343.wns.windows.com",
+                    "db5sch101110345.wns.windows.com",
+                    "db5sch101110403.wns.windows.com",
+                    "db5sch101110419.wns.windows.com",
+                    "db5sch101110438.wns.windows.com",
+                    "db5sch101110442.wns.windows.com",
+                    "db5sch101110501.wns.windows.com",
+                    "db5sch101110527.wns.windows.com",
+                    "db5sch101110533.wns.windows.com",
+                    "db5sch101110618.wns.windows.com",
+                    "db5sch101110622.wns.windows.com",
+                    "db5sch101110624.wns.windows.com",
+                    "db5sch101110626.wns.windows.com",
+                    "db5sch101110634.wns.windows.com",
+                    "db5sch101110705.wns.windows.com",
+                    "db5sch101110724.wns.windows.com",
+                    "db5sch101110740.wns.windows.com",
+                    "db5sch101110810.wns.windows.com",
+                    "db5sch101110816.wns.windows.com",
+                    "db5sch101110821.wns.windows.com",
+                    "db5sch101110822.wns.windows.com",
+                    "db5sch101110825.wns.windows.com",
+                    "db5sch101110828.wns.windows.com",
+                    "db5sch101110835.wns.windows.com",
+                    "db5sch101110919.wns.windows.com",
+                    "db5sch101110921.wns.windows.com",
+                    "db5sch101110923.wns.windows.com",
+                    "db5sch101110929.wns.windows.com",
+                    "db5sch103081814.wns.windows.com",
+                    "db5sch103082011.wns.windows.com",
+                    "db5sch103082111.wns.windows.com",
+                    "db5sch103082308.wns.windows.com",
+                    "db5sch103082406.wns.windows.com",
+                    "db5sch103082409.wns.windows.com",
+                    "db5sch103082609.wns.windows.com",
+                    "db5sch103082611.wns.windows.com",
+                    "db5sch103082709.wns.windows.com",
+                    "db5sch103082712.wns.windows.com",
+                    "db5sch103082806.wns.windows.com",
+                    "db5sch103090115.wns.windows.com",
+                    "db5sch103090415.wns.windows.com",
+                    "db5sch103090513.wns.windows.com",
+                    "db5sch103090515.wns.windows.com",
+                    "db5sch103090608.wns.windows.com",
+                    "db5sch103090806.wns.windows.com",
+                    "db5sch103090814.wns.windows.com",
+                    "db5sch103090906.wns.windows.com",
+                    "db5sch103091011.wns.windows.com",
+                    "db5sch103091012.wns.windows.com",
+                    "db5sch103091106.wns.windows.com",
+                    "db5sch103091108.wns.windows.com",
+                    "db5sch103091212.wns.windows.com",
+                    "db5sch103091311.wns.windows.com",
+                    "db5sch103091414.wns.windows.com",
+                    "db5sch103091511.wns.windows.com",
+                    "db5sch103091617.wns.windows.com",
+                    "db5sch103091715.wns.windows.com",
+                    "db5sch103091817.wns.windows.com",
+                    "db5sch103091908.wns.windows.com",
+                    "db5sch103091911.wns.windows.com",
+                    "db5sch103092010.wns.windows.com",
+                    "db5sch103092108.wns.windows.com",
+                    "db5sch103092109.wns.windows.com",
+                    "db5sch103092209.wns.windows.com",
+                    "db5sch103092210.wns.windows.com",
+                    "db5sch103092509.wns.windows.com",
+                    "db5sch103100117.wns.windows.com",
+                    "db5sch103100121.wns.windows.com",
+                    "db5sch103100221.wns.windows.com",
+                    "db5sch103100313.wns.windows.com",
+                    "db5sch103100314.wns.windows.com",
+                    "db5sch103100510.wns.windows.com",
+                    "db5sch103100511.wns.windows.com",
+                    "db5sch103100611.wns.windows.com",
+                    "db5sch103100712.wns.windows.com",
+                    "db5sch103101105.wns.windows.com",
+                    "db5sch103101208.wns.windows.com",
+                    "db5sch103101212.wns.windows.com",
+                    "db5sch103101314.wns.windows.com",
+                    "db5sch103101411.wns.windows.com",
+                    "db5sch103101413.wns.windows.com",
+                    "db5sch103101513.wns.windows.com",
+                    "db5sch103101610.wns.windows.com",
+                    "db5sch103101611.wns.windows.com",
+                    "db5sch103101705.wns.windows.com",
+                    "db5sch103101711.wns.windows.com",
+                    "db5sch103101909.wns.windows.com",
+                    "db5sch103101914.wns.windows.com",
+                    "db5sch103102009.wns.windows.com",
+                    "db5sch103102112.wns.windows.com",
+                    "db5sch103102203.wns.windows.com",
+                    "db5sch103102209.wns.windows.com",
+                    "db5sch103102310.wns.windows.com",
+                    "db5sch103102404.wns.windows.com",
+                    "db5sch103102609.wns.windows.com",
+                    "db5sch103102610.wns.windows.com",
+                    "db5sch103102805.wns.windows.com",
+                    "db5wns1d.wns.windows.com",
+                    "db6sch102090104.wns.windows.com",
+                    "db6sch102090112.wns.windows.com",
+                    "db6sch102090116.wns.windows.com",
+                    "db6sch102090122.wns.windows.com",
+                    "db6sch102090203.wns.windows.com",
+                    "db6sch102090206.wns.windows.com",
+                    "db6sch102090208.wns.windows.com",
+                    "db6sch102090209.wns.windows.com",
+                    "db6sch102090211.wns.windows.com",
+                    "db6sch102090305.wns.windows.com",
+                    "db6sch102090306.wns.windows.com",
+                    "db6sch102090308.wns.windows.com",
+                    "db6sch102090311.wns.windows.com",
+                    "db6sch102090313.wns.windows.com",
+                    "db6sch102090410.wns.windows.com",
+                    "db6sch102090412.wns.windows.com",
+                    "db6sch102090504.wns.windows.com",
+                    "db6sch102090510.wns.windows.com",
+                    "db6sch102090512.wns.windows.com",
+                    "db6sch102090513.wns.windows.com",
+                    "db6sch102090514.wns.windows.com",
+                    "db6sch102090519.wns.windows.com",
+                    "db6sch102090613.wns.windows.com",
+                    "db6sch102090619.wns.windows.com",
+                    "db6sch102090810.wns.windows.com",
+                    "db6sch102090811.wns.windows.com",
+                    "db6sch102090902.wns.windows.com",
+                    "db6sch102090905.wns.windows.com",
+                    "db6sch102090907.wns.windows.com",
+                    "db6sch102090908.wns.windows.com",
+                    "db6sch102090910.wns.windows.com",
+                    "db6sch102090911.wns.windows.com",
+                    "db6sch102091003.wns.windows.com",
+                    "db6sch102091007.wns.windows.com",
+                    "db6sch102091008.wns.windows.com",
+                    "db6sch102091009.wns.windows.com",
+                    "db6sch102091011.wns.windows.com",
+                    "db6sch102091103.wns.windows.com",
+                    "db6sch102091105.wns.windows.com",
+                    "db6sch102091204.wns.windows.com",
+                    "db6sch102091209.wns.windows.com",
+                    "db6sch102091305.wns.windows.com",
+                    "db6sch102091307.wns.windows.com",
+                    "db6sch102091308.wns.windows.com",
+                    "db6sch102091309.wns.windows.com",
+                    "db6sch102091314.wns.windows.com",
+                    "db6sch102091412.wns.windows.com",
+                    "db6sch102091503.wns.windows.com",
+                    "db6sch102091507.wns.windows.com",
+                    "db6sch102091602.wns.windows.com",
+                    "db6sch102091603.wns.windows.com",
+                    "db6sch102091606.wns.windows.com",
+                    "db6sch102091607.wns.windows.com",
+                    "dev.virtualearth.net",
                     "df.telemetry.microsoft.com",
+                    "disc101-prod.do.dsp.mp.microsoft.com",
+                    "disc201-prod.do.dsp.mp.microsoft.com",
+                    "disc401-prod.do.dsp.mp.microsoft.com",
                     "diagnostics.support.microsoft.com",
                     "ec.atdmt.com",
-                    "fe2.update.microsoft.com.akadns.net",
-                    "fe3.delivery.dsp.mp.microsoft.com.nsatc.net",
-                    "feedback.microsoft-hohm.com",
-                    "feedback.search.microsoft.com",
-                    "feedback.windows.com",
+                    "ecn.dev.virtualearth.net",
+                    "eu.vortex.data.microsoft.com",
                     "flex.msn.com",
+                    "fs.microsoft.com",
                     "g.msn.com",
+                    "geo-prod.do.dsp.mp.microsoft.com",
+                    "geover-prod.do.dsp.mp.microsoft.com",
                     "h1.msn.com",
+                    "h2.msn.com",
+                    "i-bl6p-cor001.api.p001.1drv.com",
+                    "i-by3p-cor001.api.p001.1drv.com",
+                    "i-by3p-cor002.api.p001.1drv.com",
+                    "i-ch1-cor001.api.p001.1drv.com",
+                    "i-ch1-cor002.api.p001.1drv.com",
+                    "i-sn2-cor001.api.p001.1drv.com",
+                    "i-sn2-cor002.api.p001.1drv.com",
                     "i1.services.social.microsoft.com",
                     "i1.services.social.microsoft.com.nsatc.net",
+                    "inference.location.live.net",
+                    "kv101-prod.do.dsp.mp.microsoft.com",
+                    "kv201-prod.do.dsp.mp.microsoft.com",
+                    "kv401-prod.do.dsp.mp.microsoft.com",
                     "lb1.www.ms.akadns.net",
                     "live.rads.msn.com",
+                    "ls2web.redmond.corp.microsoft.com",
                     "m.adnxs.com",
-                    "m.hotmail.com",
+                    "mobile.pipe.aria.microsoft.com",
                     "msedge.net",
-                    "msftncsi.com",
-                    "msnbot-207-46-194-33.search.msn.com",
-                    "msnbot-65-55-108-23.search.msn.com",
                     "msntest.serving-sys.com",
+                    "nexus.officeapps.live.com",
+                    "nexusrules.officeapps.live.com",
                     "oca.telemetry.microsoft.com",
                     "oca.telemetry.microsoft.com.nsatc.net",
+                    "onesettings-bn2.metron.live.com.nsatc.net",
+                    "onesettings-cy2.metron.live.com.nsatc.net",
+                    "onesettings-db5.metron.live.com.nsatc.net",
+                    "onesettings-hk2.metron.live.com.nsatc.net",
                     "pre.footprintpredict.com",
                     "preview.msn.com",
-                    "pricelist.skype.com",
                     "rad.live.com",
                     "rad.msn.com",
                     "redir.metaservices.microsoft.com",
                     "reports.wes.df.telemetry.microsoft.com",
-                    "s.gateway.messenger.live.com",
-                    "s0.2mdn.net",
-                    "schemas.microsoft.akadns.net ",
+                    "schemas.microsoft.akadns.net",
                     "secure.adnxs.com",
                     "secure.flashtalking.com",
                     "services.wes.df.telemetry.microsoft.com",
-                    "settings.data.microsoft.com",
                     "settings-sandbox.data.microsoft.com",
                     "settings-win.data.microsoft.com",
-                    "sls.update.microsoft.com.akadns.net",
-                    "sO.2mdn.net",
+                    "settings-win-ppe.data.microsoft.com",
+                    "settings.data.glbdns2.microsoft.com",
+                    "settings.data.microsoft.com",
+                    "sn3301-c.1drv.com",
+                    "sn3301-e.1drv.com",
+                    "sn3301-g.1drv.com",
                     "spynet2.microsoft.com",
                     "spynetalt.microsoft.com",
+                    "spyneteurope.microsoft.akadns.net",
                     "sqm.df.telemetry.microsoft.com",
                     "sqm.telemetry.microsoft.com",
                     "sqm.telemetry.microsoft.com.nsatc.net",
                     "ssw.live.com",
-                    "static.2mdn.net",
-                    "statsfe1.ws.microsoft.com",
-                    "statsfe2.update.microsoft.com.akadns.net",
-                    "statsfe2.ws.microsoft.com",
+                    "storecatalogrevocation.storequality.microsoft.com",
                     "survey.watson.microsoft.com",
+                    "t0.ssl.ak.dynamic.tiles.virtualearth.net",
+                    "t0.ssl.ak.tiles.virtualearth.net",
                     "telecommand.telemetry.microsoft.com",
                     "telecommand.telemetry.microsoft.com.nsatc.net",
-                    "telecommand.telemetry.microsoft.com.nsat­c.net",
                     "telemetry.appex.bing.net",
-                    "telemetry.appex.bing.net:443",
                     "telemetry.microsoft.com",
                     "telemetry.urs.microsoft.com",
-                    "ui.skype.com",
+                    "test.activity.windows.com",
+                    "tsfe.trafficshaping.dsp.mp.microsoft.com",
+                    "v10.vortex-win.data.metron.live.com.nsatc.net",
                     "v10.vortex-win.data.microsoft.com",
+                    "version.hybrid.api.here.com",
                     "view.atdmt.com",
-                    "vortex.data.microsoft.com",
                     "vortex-bn2.metron.live.com.nsatc.net",
                     "vortex-cy2.metron.live.com.nsatc.net",
+                    "vortex-db5.metron.live.com.nsatc.net",
+                    "vortex-hk2.metron.live.com.nsatc.net",
                     "vortex-sandbox.data.microsoft.com",
+                    "vortex-win.data.metron.live.com.nsatc.net",
                     "vortex-win.data.microsoft.com",
+                    "vortex.data.glbdns2.microsoft.com",
+                    "vortex.data.metron.live.com.nsatc.net",
+                    "vortex.data.microsoft.com",
                     "watson.live.com",
                     "watson.microsoft.com",
                     "watson.ppe.telemetry.microsoft.com",
                     "watson.telemetry.microsoft.com",
                     "watson.telemetry.microsoft.com.nsatc.net",
+                    "web.vortex.data.microsoft.com",
                     "wes.df.telemetry.microsoft.com",
                     "win10.ipv6.microsoft.com",
-                    "www.msftncsi.com",
+                    "win1710.ipv6.microsoft.com",
+                    "www.msedge.net"
                 };
                 var hostslocation = _system32Location + @"drivers\etc\hosts";
                 string hosts = null;
@@ -1351,25 +1781,18 @@ namespace DWS_Lite
             {
                 var windowsIdentityUser = WindowsIdentity.GetCurrent();
                 var gwxDir = Environment.SystemDirectory + @"\GWX";
-                if (windowsIdentityUser != null)
+                var userName = windowsIdentityUser.Name.Split('\\')[1];
+                if (Directory.Exists(gwxDir))
                 {
-                    var userName = windowsIdentityUser.Name.Split('\\')[1];
-                    if (Directory.Exists(gwxDir))
-                    {
-                        RunCmd("/c TASKKILL /F /IM gwx.exe");
-                        RunCmd($"/c takeown /f \"{gwxDir}\" /d y");
-                        RunCmd($"/c icacls \"{gwxDir}\" /grant {userName}:F /q");
-                        RunCmd($"/c rmdir /s /q {gwxDir}");
-                        _OutPut("Delete GWX");
-                    }
-                    else
-                    {
-                        _OutPut("GWX NOT FOUND", LogLevel.Warning);
-                    }
+                    RunCmd("/c TASKKILL /F /IM gwx.exe");
+                    RunCmd($"/c takeown /f \"{gwxDir}\" /d y");
+                    RunCmd($"/c icacls \"{gwxDir}\" /grant {userName}:F /q");
+                    RunCmd($"/c rmdir /s /q {gwxDir}");
+                    _OutPut("Delete GWX");
                 }
                 else
                 {
-                    _OutPut("Error delete GWX #1221", LogLevel.Error);
+                    _OutPut("GWX NOT FOUND", LogLevel.Warning);
                 }
             }
             catch (Exception ex)
@@ -1426,11 +1849,18 @@ namespace DWS_Lite
         {
             string[] ipAddr =
             {
+                "104.87.88.177",
+                "104.89.242.39",
                 "104.96.147.3",
                 "111.221.29.177",
                 "111.221.29.253",
-                "111.221.64.0-111.221.127.255", // singapure
+                "111.221.64.0-111.221.127.255",
+                "131.253.34.230",
                 "131.253.40.37",
+                "131.253.61.100",
+                "131.253.61.64",
+                "131.253.61.68",
+                "131.253.61.96",
                 "134.170.115.60",
                 "134.170.165.248",
                 "134.170.165.253",
@@ -1442,16 +1872,19 @@ namespace DWS_Lite
                 "157.55.130.0-157.55.130.255",
                 "157.55.133.204",
                 "157.55.235.0-157.55.235.255",
-                "157.55.236.0-157.55.236.255", // NEW TH2 SPY IP
+                "157.55.236.0-157.55.236.255",
                 "157.55.240.220",
                 "157.55.52.0-157.55.52.255",
                 "157.55.56.0-157.55.56.255",
                 "157.56.106.189",
                 "157.56.121.89",
-                "157.56.124.87", // NEW TH2 Spy IP
+                "157.56.124.87",
+                "157.56.77.148",
+                "157.56.77.149",
                 "157.56.91.77",
                 "157.56.96.54",
                 "168.63.108.233",
+                "172.230.215.85",
                 "191.232.139.2",
                 "191.232.139.254",
                 "191.232.80.58",
@@ -1467,19 +1900,23 @@ namespace DWS_Lite
                 "207.68.166.254",
                 "212.30.134.204",
                 "212.30.134.205",
-                "213.199.179.0-213.199.179.255", // Ireland
+                "213.199.179.0-213.199.179.255",
                 "23.102.21.4",
+                "23.204.68.66",
+                "23.205.214.76",
                 "23.218.212.69",
-                "23.223.20.82", // cache.datamart.windows.com
+                "23.223.20.82",
+                "23.36.33.135",
+                "23.48.106.243",
                 "23.57.101.163",
-                "23.57.107.163",
                 "23.57.107.27",
                 "23.99.10.11",
+                "40.77.226.221",
+                "40.77.226.223",
+                "52.167.222.147",
                 "64.4.23.0-64.4.23.255",
                 "64.4.54.22",
-                "64.4.54.32",
                 "64.4.6.100",
-                "65.39.117.230",
                 "65.39.117.230",
                 "65.52.100.11",
                 "65.52.100.7",
@@ -1488,6 +1925,8 @@ namespace DWS_Lite
                 "65.52.100.92",
                 "65.52.100.93",
                 "65.52.100.94",
+                "65.52.108.103",
+                "65.52.108.254",
                 "65.52.108.29",
                 "65.52.108.33",
                 "65.55.108.23",
@@ -1501,7 +1940,7 @@ namespace DWS_Lite
                 "65.55.252.93",
                 "65.55.29.238",
                 "65.55.39.10",
-                "77.67.29.176" // NEW TH2 Spy IP
+                "77.67.29.176"
             };
             foreach (var currentIpAddr in ipAddr)
             {
@@ -1535,34 +1974,31 @@ Are you sure?", @"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
             try
             {
                 var windowsIdentityUser = WindowsIdentity.GetCurrent();
-                if (windowsIdentityUser != null)
+                var userName = windowsIdentityUser.Name.Split('\\')[1];
+                MessageBox.Show(GetTranslateText("FindOffice16FileT"), GetTranslateText("Info"),
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var opnFileDialog = new OpenFileDialog
                 {
-                    var userName = windowsIdentityUser.Name.Split('\\')[1];
-                    MessageBox.Show(GetTranslateText("FindOffice16FileT"), GetTranslateText("Info"),
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    var opnFileDialog = new OpenFileDialog
+                    InitialDirectory = @"C:\Program Files\Microsoft Office\root\Office16\",
+                    Filter = @"msosync.exe|msosync.exe"
+                };
+                var officePath = @"C:\Program Files\Microsoft Office\root\Office16\msosync.exe";
+                if (opnFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(opnFileDialog.FileName))
                     {
-                        InitialDirectory = @"C:\Program Files\Microsoft Office\root\Office16\",
-                        Filter = @"msosync.exe|msosync.exe"
-                    };
-                    var officePath = @"C:\Program Files\Microsoft Office\root\Office16\msosync.exe";
-                    if (opnFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        if (File.Exists(opnFileDialog.FileName))
-                        {
-                            officePath = opnFileDialog.FileName;
-                        }
+                        officePath = opnFileDialog.FileName;
                     }
-
-                    RunCmd("/c TASKKILL /F /IM msosync.exe");
-                    RunCmd($"/c takeown /f \"{officePath}\" /d y");
-                    RunCmd($"/c icacls \"{officePath}\" /grant {userName}:F /q");
-                    var fileOffice = File.ReadAllBytes(officePath);
-                    fileOffice = StringToByteArray(ByteArrayToString(fileOffice).Replace("68747470", "78747470"));
-                    // find "http" and replace to "xttp".
-                    File.WriteAllBytes(officePath, fileOffice);
-                    _OutPut("Complete");
                 }
+
+                RunCmd("/c TASKKILL /F /IM msosync.exe");
+                RunCmd($"/c takeown /f \"{officePath}\" /d y");
+                RunCmd($"/c icacls \"{officePath}\" /grant {userName}:F /q");
+                var fileOffice = File.ReadAllBytes(officePath);
+                fileOffice = StringToByteArray(ByteArrayToString(fileOffice).Replace("68747470", "78747470"));
+                // find "http" and replace to "xttp".
+                File.WriteAllBytes(officePath, fileOffice);
+                _OutPut("Complete");
             }
             catch (Exception ex)
             {
@@ -1858,22 +2294,22 @@ Are you sure?", @"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
             checkBoxDeleteGWX.Text = GetTranslateText("checkBoxDeleteGWX");
             labelUninstallUpdates.Text = GetTranslateText("labelUninstallUpdates");
             labelInfoDeleteMetroApps.Text = GetTranslateText("labelInfoDeleteMetroApps");
-            btnEnableUac.Text = $"{GetTranslateText("Enable")} UAC";
-            btnDisableUac.Text = $"{GetTranslateText("Disable")} UAC";
-            btnDisableOfficeUpdate.Text = $"{GetTranslateText("Disable")} Office 2016 Telemetry";
-            btnDisableWindowsUpdate.Text = $"{GetTranslateText("Disable")} Windows Update";
-            btnEnableWindowsUpdate.Text = $"{GetTranslateText("Enable")} Windows Update";
-            checkBoxDeleteApp3d.Text = $"{GetTranslateText("Delete")} Builder 3D";
-            checkBoxDeleteAppCamera.Text = $"{GetTranslateText("Delete")} Camera";
-            checkBoxDeleteMailCalendarMaps.Text = $"{GetTranslateText("Delete")} Mail, Calendar, Maps";
-            checkBoxDeleteAppBing.Text = $"{GetTranslateText("Delete")} Money, Sports, News, Weather";
-            checkBoxDeleteAppZune.Text = $"{GetTranslateText("Delete")} Groove Music, Film TV";
-            checkBoxDeleteAppPeopleOneNote.Text = $"{GetTranslateText("Delete")} People, OneNote";
-            checkBoxDeleteAppPhone.Text = $"{GetTranslateText("Delete")} Phone Companion";
-            checkBoxDeleteAppPhotos.Text = $"{GetTranslateText("Delete")} Photos";
-            checkBoxDeleteAppSolit.Text = $"{GetTranslateText("Delete")} Solitaire Collection";
-            checkBoxDeleteAppVoice.Text = $"{GetTranslateText("Delete")} Voice Recorder";
-            checkBoxDeleteAppXBOX.Text = $"{GetTranslateText("Delete")} XBOX";
+            btnEnableUac.Text = string.Format(Resources.MainDwsForm_ChangeLanguage__0__UAC, GetTranslateText("Enable"));
+            btnDisableUac.Text = string.Format(Resources.MainDwsForm_ChangeLanguage__0__UAC, GetTranslateText("Disable"));
+            btnDisableOfficeUpdate.Text = string.Format(Resources.MainDwsForm_ChangeLanguage__0__Office_2016_Telemetry, GetTranslateText("Disable"));
+            btnDisableWindowsUpdate.Text = string.Format(Resources.MainDwsForm_ChangeLanguage__0__Windows_Update, GetTranslateText("Disable"));
+            btnEnableWindowsUpdate.Text = string.Format(Resources.MainDwsForm_ChangeLanguage__0__Windows_Update, GetTranslateText("Enable"));
+            checkBoxDeleteApp3d.Text = string.Format(Resources.MainDwsForm_ChangeLanguage__0__Builder_3D, GetTranslateText("Delete"));
+            checkBoxDeleteAppCamera.Text = string.Format(Resources.MainDwsForm_ChangeLanguage__0__Camera, GetTranslateText("Delete"));
+            checkBoxDeleteMailCalendarMaps.Text = string.Format(Resources.MainDwsForm_ChangeLanguage__0__Mail__Calendar__Maps, GetTranslateText("Delete"));
+            checkBoxDeleteAppBing.Text = string.Format(Resources.MainDwsForm_ChangeLanguage__0__Money__Sports__News__Weather, GetTranslateText("Delete"));
+            checkBoxDeleteAppZune.Text = string.Format(Resources.MainDwsForm_ChangeLanguage__0__Groove_Music__Film_TV, GetTranslateText("Delete"));
+            checkBoxDeleteAppPeopleOneNote.Text = string.Format(Resources.MainDwsForm_ChangeLanguage__0__People__OneNote, GetTranslateText("Delete"));
+            checkBoxDeleteAppPhone.Text = string.Format(Resources.MainDwsForm_ChangeLanguage__0__Phone_Companion, GetTranslateText("Delete"));
+            checkBoxDeleteAppPhotos.Text = string.Format(Resources.MainDwsForm_ChangeLanguage__0__Photos, GetTranslateText("Delete"));
+            checkBoxDeleteAppSolit.Text = string.Format(Resources.MainDwsForm_ChangeLanguage__0__Solitaire_Collection, GetTranslateText("Delete"));
+            checkBoxDeleteAppVoice.Text = string.Format(Resources.MainDwsForm_ChangeLanguage__0__Voice_Recorder, GetTranslateText("Delete"));
+            checkBoxDeleteAppXBOX.Text = string.Format(Resources.MainDwsForm_ChangeLanguage__0__XBOX, GetTranslateText("Delete"));
             btnRemoveOldFirewallRules.Text = GetTranslateText("RemoveAllOldFirewallRules");
         }
 
@@ -2054,10 +2490,6 @@ Are you sure?", @"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
         {
             CaptionWindow.ForeColor = Color.FromArgb(164, 164, 164);
         }
-
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("http://nullptr.space");
-        }
+        
     }
 }

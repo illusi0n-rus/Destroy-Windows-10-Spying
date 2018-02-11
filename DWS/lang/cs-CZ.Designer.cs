@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DWS_Lite.lang {
+namespace DWS.lang {
     using System;
     
     
@@ -19,7 +19,7 @@ namespace DWS_Lite.lang {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class cs_CZ {
@@ -39,7 +39,7 @@ namespace DWS_Lite.lang {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS_Lite.lang.cs-CZ", typeof(cs_CZ).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS.lang.cs-CZ", typeof(cs_CZ).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -311,8 +311,7 @@ namespace DWS_Lite.lang {
         ///   Looks up a localized string similar to Tento program likviduje špehování ve Windows 7/8/8.1/10.
         ///Program je otevřeným zdrojovým kódem, který je umístěn na github.
         ///Tento program kompletně zničí špehování. Odstraňuje některé prvky telemetrie a jiné vypne, zakáže Windows Defender, Cortanu a ještě mnohem více, jako je třeba zakázání programu Windows Update, které vám umožní zůstat v anonymitě a znemožní vnucování aktualizací s novým spywarem.
-        ///Smazat aplikace metro je velmi dobré, protože pracují na pozadí, zabírají paměť a některé z nich špiclují.
-        ///Ta [rest of string was truncated]&quot;;.
+        ///Smazat aplikace metro je velmi dobré, protože pracují na pozadí, zabírají paměť a některé z nich špiclují. [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ReadMeTextBox {
             get {

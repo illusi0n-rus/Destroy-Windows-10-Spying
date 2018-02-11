@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DWS_Lite.lang {
+namespace DWS.lang {
     using System;
     
     
@@ -19,7 +19,7 @@ namespace DWS_Lite.lang {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class uk_UA {
@@ -39,7 +39,7 @@ namespace DWS_Lite.lang {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS_Lite.lang.uk-UA", typeof(uk_UA).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS.lang.uk-UA", typeof(uk_UA).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -75,6 +75,15 @@ namespace DWS_Lite.lang {
         internal static string btnDeleteOneDrive {
             get {
                 return ResourceManager.GetString("btnDeleteOneDrive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Виправити поворот екрану.
+        /// </summary>
+        internal static string btnFixRotateScreen {
+            get {
+                return ResourceManager.GetString("btnFixRotateScreen", resourceCulture);
             }
         }
         
@@ -124,7 +133,7 @@ namespace DWS_Lite.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Видалити GWX (Отримати Windows 10)
+        ///   Looks up a localized string similar to Видалити GWX (Отримати Windows 10).
         /// </summary>
         internal static string checkBoxDeleteGWX {
             get {
@@ -338,7 +347,7 @@ namespace DWS_Lite.lang {
         ///   Looks up a localized string similar to Ця програма унеможливлює шпигунство у Windows 7/8/8.1/10.
         ///У неї відкритий початковий код, який можна знайти на github.
         ///Ця програма цілком унеможливлює шпигунство. Видаляє елементи Телеметрії, а інші вимикає, вимикає Windows Defender, Кортану та чимало іншого. Також вона вимикає Windows Update, що дозволяє Вам лишатись анонімним і не отримувати нових шпигунських оновлень.
-        ///Функція видалення застосунків Metro дуже потрібна, тому що вони працюють у тлі та споживають оперативну пам’ять, а деякі з них шпигують за [rest of string was truncated]&quot;;.
+        ///Функція видалення застосунків Metro дуже потрібна, тому що вони працюють у тлі та споживають оперативну пам’ять, а деякі з них шпигують [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ReadMeTextBox {
             get {

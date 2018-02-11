@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace DWS_Lite
+namespace DWS
 {
     sealed partial class MainDwsForm
     {
@@ -83,9 +83,8 @@ namespace DWS_Lite
             this.btnOpenAndEditHosts = new System.Windows.Forms.Button();
             this.btnRestoreSystem = new System.Windows.Forms.Button();
             this.btnDeleteAllWindows10Apps = new System.Windows.Forms.Button();
+            this.btnDisableOfficeUpdate = new System.Windows.Forms.Button();
             this.tabPageAbout = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.linkLabelSourceCode = new System.Windows.Forms.LinkLabel();
@@ -102,7 +101,6 @@ namespace DWS_Lite
             this.BorderUP = new System.Windows.Forms.PictureBox();
             this.MinimizeButton = new System.Windows.Forms.PictureBox();
             this._CloseButton = new System.Windows.Forms.PictureBox();
-            this.btnDisableOfficeUpdate = new System.Windows.Forms.Button();
             this.FormTabsControl.SuspendLayout();
             this.tabPageMain.SuspendLayout();
             this.tabPageSettings.SuspendLayout();
@@ -177,7 +175,8 @@ namespace DWS_Lite
             this.LogOutputTextBox.ReadOnly = true;
             this.LogOutputTextBox.Size = new System.Drawing.Size(429, 279);
             this.LogOutputTextBox.TabIndex = 3;
-            this.LogOutputTextBox.Text = "https://twitter.com/nummerok\nhttp://nullptr.space\n==========================\n\n";
+            this.LogOutputTextBox.Text = "https://twitter.com/nummerok\n\nDonate:\nBTC: 1GvGof9C9HDwJKgTw4WJJiTirPc5qfPz5g\nETH" +
+    ": 0x8f9c91041cf42c61693d47d6a1c3977f23c80a30\n==========================\n\n";
             this.LogOutputTextBox.TextChanged += new System.EventHandler(this.LogOutputTextBox_TextChanged);
             // 
             // StatusCommandsLable
@@ -696,9 +695,9 @@ namespace DWS_Lite
             this.btnRemoveOldFirewallRules.BackColor = System.Drawing.Color.Transparent;
             this.btnRemoveOldFirewallRules.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoveOldFirewallRules.ForeColor = System.Drawing.Color.Green;
-            this.btnRemoveOldFirewallRules.Location = new System.Drawing.Point(223, 147);
+            this.btnRemoveOldFirewallRules.Location = new System.Drawing.Point(229, 147);
             this.btnRemoveOldFirewallRules.Name = "btnRemoveOldFirewallRules";
-            this.btnRemoveOldFirewallRules.Size = new System.Drawing.Size(214, 23);
+            this.btnRemoveOldFirewallRules.Size = new System.Drawing.Size(202, 23);
             this.btnRemoveOldFirewallRules.TabIndex = 6;
             this.btnRemoveOldFirewallRules.Text = "Remove all old DWS firewall rules";
             this.btnRemoveOldFirewallRules.UseVisualStyleBackColor = false;
@@ -839,12 +838,24 @@ namespace DWS_Lite
             this.btnDeleteAllWindows10Apps.UseVisualStyleBackColor = false;
             this.btnDeleteAllWindows10Apps.Click += new System.EventHandler(this.btnDeleteAllWindows10Apps_Click);
             // 
+            // btnDisableOfficeUpdate
+            // 
+            this.btnDisableOfficeUpdate.BackColor = System.Drawing.Color.Transparent;
+            this.btnDisableOfficeUpdate.BackgroundImage = global::DWS.Properties.Resources.warning;
+            this.btnDisableOfficeUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnDisableOfficeUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDisableOfficeUpdate.Location = new System.Drawing.Point(14, 147);
+            this.btnDisableOfficeUpdate.Name = "btnDisableOfficeUpdate";
+            this.btnDisableOfficeUpdate.Size = new System.Drawing.Size(202, 23);
+            this.btnDisableOfficeUpdate.TabIndex = 6;
+            this.btnDisableOfficeUpdate.Text = "Disable Office 2016 Telemetry";
+            this.btnDisableOfficeUpdate.UseVisualStyleBackColor = false;
+            this.btnDisableOfficeUpdate.Click += new System.EventHandler(this.btnDisableOfficeUpdate_Click);
+            // 
             // tabPageAbout
             // 
             this.tabPageAbout.BackColor = System.Drawing.Color.White;
             this.tabPageAbout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tabPageAbout.Controls.Add(this.label2);
-            this.tabPageAbout.Controls.Add(this.linkLabel2);
             this.tabPageAbout.Controls.Add(this.label1);
             this.tabPageAbout.Controls.Add(this.textBox1);
             this.tabPageAbout.Controls.Add(this.linkLabelSourceCode);
@@ -856,27 +867,6 @@ namespace DWS_Lite
             this.tabPageAbout.Size = new System.Drawing.Size(445, 400);
             this.tabPageAbout.TabIndex = 3;
             this.tabPageAbout.Text = "About";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 358);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "HomePage:";
-            // 
-            // linkLabel2
-            // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.linkLabel2.Location = new System.Drawing.Point(84, 358);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(70, 13);
-            this.linkLabel2.TabIndex = 15;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Nullptr.space";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // label1
             // 
@@ -895,9 +885,7 @@ namespace DWS_Lite
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(417, 258);
             this.textBox1.TabIndex = 13;
-            this.textBox1.Text = "1.6 Build 722 Support Windows Redstone\r\n- VS 2015 code style\r\n+ add new spying ta" +
-    "sks\r\n+ add auto-update\r\n+ add new spying hosts\r\n\r\n1.6 Build 717 rollup\r\n- Add Pe" +
-    "rsian Language\r\n- Fix Some things";
+            this.textBox1.Text = "1.7 DWS support last win 10\r\n+ Fixes\r\n+ Support last Win 10 updates";
             // 
             // linkLabelSourceCode
             // 
@@ -1086,20 +1074,6 @@ namespace DWS_Lite
             this._CloseButton.MouseEnter += new System.EventHandler(this.CloseButton_MouseEnter);
             this._CloseButton.MouseLeave += new System.EventHandler(this.CloseButton_MouseLeave);
             // 
-            // btnDisableOfficeUpdate
-            // 
-            this.btnDisableOfficeUpdate.BackColor = System.Drawing.Color.Transparent;
-            this.btnDisableOfficeUpdate.BackgroundImage = global::DWS_Lite.Properties.Resources.warning;
-            this.btnDisableOfficeUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnDisableOfficeUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDisableOfficeUpdate.Location = new System.Drawing.Point(14, 147);
-            this.btnDisableOfficeUpdate.Name = "btnDisableOfficeUpdate";
-            this.btnDisableOfficeUpdate.Size = new System.Drawing.Size(202, 23);
-            this.btnDisableOfficeUpdate.TabIndex = 6;
-            this.btnDisableOfficeUpdate.Text = "Disable Office 2016 Telemetry";
-            this.btnDisableOfficeUpdate.UseVisualStyleBackColor = false;
-            this.btnDisableOfficeUpdate.Click += new System.EventHandler(this.btnDisableOfficeUpdate_Click);
-            // 
             // MainDwsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1223,8 +1197,6 @@ namespace DWS_Lite
         private Button btnFixRotateScreen;
         private Label label1;
         private TextBox textBox1;
-        private LinkLabel linkLabel2;
-        private Label label2;
     }
 }
 
