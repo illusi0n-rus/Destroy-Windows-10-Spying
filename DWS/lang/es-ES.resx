@@ -246,4 +246,16 @@ Argumentos para la línea de comandos:
   <data name="FindOffice16FileT" xml:space="preserve">
     <value>Por favor, especifique la ruta del archivo msosync.exe. Si Office 2016 está instalado como estándar en la unidad C, clic en "Cancelar"</value>
   </data>
+  <data name="checkBoxDeleteGWX" xml:space="preserve">
+    <value>Eliminar GWX</value>
+  </data>
+  <data name="checkBoxDeleteWindows78Updates" xml:space="preserve">
+    <value>Eliminar actualizaciones espías</value>
+  </data>
+  <data name="labelUninstallUpdates" xml:space="preserve">
+    <value>Desinstalar actualizaciones:</value>
+  </data>
+  <data name="btnFixRotateScreen" xml:space="preserve">
+    <value>Arreglar rotación de pantalla</value>
+  </data>
 </root>
