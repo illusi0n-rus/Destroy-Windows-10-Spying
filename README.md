@@ -11,22 +11,7 @@
 - Remove Office 2016 telemetry
 - Open Source!
 
-### Determination of the system language
-
-We get the language from the command-line arguments to the function:
-```c#
-private string _GetLang(IEnumerable<string> args)
-```
-Next we set language in function:
-```c#
-private void SetLanguage(string currentlang = null)
-```
-And call function to change the language:
-```c#
-private void ChangeLanguage()
-```
-
-### Copyright 2015 Nummer
+### Copyright 2018 Nummer
 
 [Twitter @nummerok](https://twitter.com/nummerok)
 
@@ -43,3 +28,7 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+### Donate:
+## BTC: 1GvGof9C9HDwJKgTw4WJJiTirPc5qfPz5g
+## ETH: 0x8f9c91041cf42c61693d47d6a1c3977f23c80a30
