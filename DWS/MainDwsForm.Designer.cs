@@ -885,7 +885,8 @@ namespace DWS
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(417, 258);
             this.textBox1.TabIndex = 13;
-            this.textBox1.Text = "1.7 DWS support last win 10\r\n+ Fixes\r\n+ Support last Win 10 updates";
+            this.textBox1.Text = "1.7.1 More fixes\r\n* fix WiFi work\r\n* fix code\r\n* fix DWS stopped working\r\n\r\n1.7 D" +
+    "WS support last win 10\r\n+ Fixes\r\n+ Support last Win 10 updates";
             // 
             // linkLabelSourceCode
             // 

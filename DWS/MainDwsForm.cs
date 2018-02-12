@@ -24,17 +24,12 @@ namespace DWS
     public sealed partial class MainDwsForm : Form
     {
         private const string LogFileName = "DWS.log";
-        // ReSharper disable once InconsistentNaming
         public const int WM_NCLBUTTONDOWN = 0xA1;
-        // ReSharper disable once InconsistentNaming
         public const int HT_CAPTION = 0x2;
-        // ReSharper disable once InconsistentNaming
         private const int CS_DROPSHADOW = 0x00020000;
         private readonly string _systemPath = Path.GetPathRoot(Environment.SystemDirectory);
         private bool _destroyFlag;
-        // ReSharper disable once CollectionNeverQueried.Local
-        // ReSharper disable once FieldCanBeMadeReadOnly.Local
-        private List<string> _errorsList = new List<string>();
+        private readonly List<string> _errorsList = new List<string>();
         private int _fatalErrors;
         private ResourceManager _rm;
         private string _system32Location;
@@ -137,13 +132,9 @@ namespace DWS
                     }
                 }
             }
-                // ReSharper disable once EmptyGeneralCatchClause
-                // ReSharper disable once UnusedVariable
             catch (Exception ex)
             {
-#if DEBUG
                 _OutPut($"Error in AnimateBackground: {ex.Message}", LogLevel.Debug);
-#endif
             }
         }
 
@@ -323,13 +314,9 @@ namespace DWS
                     File.Create(logfilename).Close();
                 }
             }
-                // ReSharper disable once EmptyGeneralCatchClause
-                // ReSharper disable once UnusedVariable
             catch (Exception ex)
             {
-#if DEBUG
                 _OutPut(ex.Message, LogLevel.Debug);
-#endif
             }
         }
 
@@ -360,24 +347,18 @@ namespace DWS
                     }
                 };
                 proc.Start();
-                // ReSharper disable once NotAccessedVariable
                 string line = null;
                 while (!proc.StandardOutput.EndOfStream)
                 {
                     line += Environment.NewLine + proc.StandardOutput.ReadLine();
                 }
                 proc.WaitForExit();
-#if DEBUG
                 _OutPut($"Start: {name} {args}{Environment.NewLine}Output: {line}", LogLevel.Debug);
-#endif
             }
-                // ReSharper disable once UnusedVariable
             catch (Exception ex)
             {
                 _OutPut($"Error start prog {name} {args}", LogLevel.Error);
-#if DEBUG
                 _OutPut(ex.Message, LogLevel.Debug);
-#endif
                 _fatalErrors++;
                 _errorsList.Add($"Error start prog {name} {args}");
             }
@@ -427,9 +408,11 @@ namespace DWS
 
         private void DisableSpyServices(string serviceName)
         {
-            RunCmd($"/c net stop {serviceName}");
-            ProcStartargs("powershell", $"-command \"Set-Service -Name {serviceName} -StartupType Disabled\"");
-            _OutPut($"Disable {serviceName} service");
+            new Thread(() => { 
+                RunCmd($"/c net stop {serviceName}");
+                ProcStartargs("powershell", $"-command \"Set-Service -Name {serviceName} -StartupType Disabled\"");
+                _OutPut($"Disable {serviceName} service");
+            }).Start();
         }
 
         private void DestroyWindowsSpyingMainThread()
@@ -443,13 +426,10 @@ namespace DWS
                     CreateRestorePoint(restorepointName);
                     _OutPut($"Restore point {restorepointName} created.");
                 }
-                    // ReSharper disable once UnusedVariable
                 catch (Exception ex)
                 {
                     _OutPut("Error creating restore point.");
-#if DEBUG
                     _OutPut(ex.Message, LogLevel.Debug);
-#endif
                 }
             }
             Progressbaradd(10);
@@ -489,7 +469,7 @@ namespace DWS
                     "HomeGroupProvider", // HomeGroup Provider
                     "bthserv", // Bluetooth Support Service
                     "wscsvc", // Security Center Service
-                    "WlanSvc", // WLAN AutoConfig
+                    //"WlanSvc", // WLAN AutoConfig #TODO: Path only. Not disable.
                     "OneSyncSvc", // Sync Host Service
                     "AeLookupSvc", // Application Experience Service
                     "PcaSvc", // Program Compatibility Assistant
@@ -658,13 +638,9 @@ namespace DWS
                 {
                     SetCompleteText();
                 }
-                    // ReSharper disable once UnusedVariable
-                    // ReSharper disable once EmptyGeneralCatchClause
                 catch (Exception ex)
                 {
-#if DEBUG
                     _OutPut(ex.Message, LogLevel.Debug);
-#endif
                 }
             }
         }
@@ -2041,7 +2017,6 @@ Are you sure?", @"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
         }
 
         [DllImport("user32.dll")]
-        // ReSharper disable once InconsistentNaming
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
         [DllImport("user32.dll")]
@@ -2327,12 +2302,9 @@ Are you sure?", @"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
                     return en_US.ResourceManager.GetString(name);
                 }
             }
-                // ReSharper disable once UnusedVariable
             catch (Exception ex)
             {
-#if DEBUG
                 _OutPut($"Error get translate {name}. \nError: {ex.Message}", LogLevel.Debug);
-#endif
                 return en_US.ResourceManager.GetString(name);
             }
         }
@@ -2416,8 +2388,13 @@ Are you sure?", @"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
                     str = "[!! FATAL ERROR !!] " + str;
                     break;
                 case LogLevel.Debug:
+#if !DEBUG
+                    return;
+#endif
                     str = "[DEBUG] " + str;
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(logLevel), logLevel, null);
             }
             File.WriteAllText(LogFileName, File.ReadAllText(LogFileName) + str + Environment.NewLine);
             Console.WriteLine(str);
@@ -2431,9 +2408,9 @@ Are you sure?", @"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
             LogOutputTextBox.Text += splittext;
         }
 
-        #endregion
+#endregion
 
-        #region registry
+#region registry
 
         private void SetRegValueHkcu(string regkeyfolder, string paramname, string paramvalue, RegistryValueKind keytype)
         {
@@ -2474,7 +2451,7 @@ Are you sure?", @"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
             myKey?.Close();
         }
 
-        #endregion
+#endregion
 
         private void checkBoxDeleteWindows78Updates_CheckedChanged(object sender, EventArgs e)
         {
