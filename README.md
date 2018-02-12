@@ -1,3 +1,5 @@
+## [Latest Release](https://github.com/Nummer/Destroy-Windows-10-Spying/releases/latest)
+
 # Destroy Windows 10 Spying
 
 ### Features
