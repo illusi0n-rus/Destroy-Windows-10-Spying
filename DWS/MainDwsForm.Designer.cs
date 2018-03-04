@@ -175,8 +175,9 @@ namespace DWS
             this.LogOutputTextBox.ReadOnly = true;
             this.LogOutputTextBox.Size = new System.Drawing.Size(429, 279);
             this.LogOutputTextBox.TabIndex = 3;
-            this.LogOutputTextBox.Text = "https://twitter.com/nummerok\n\nDonate:\nBTC: 1GvGof9C9HDwJKgTw4WJJiTirPc5qfPz5g\nETH" +
-    ": 0x8f9c91041cf42c61693d47d6a1c3977f23c80a30\n==========================\n\n";
+            this.LogOutputTextBox.Text = "https://twitter.com/nummerok\n>> https://t.me/DestroyWindowsSpying <<\n\nDonate:\nBTC" +
+    ": 1GvGof9C9HDwJKgTw4WJJiTirPc5qfPz5g\nETH: 0x8f9c91041cf42c61693d47d6a1c3977f23c8" +
+    "0a30\n==========================\n\n";
             this.LogOutputTextBox.TextChanged += new System.EventHandler(this.LogOutputTextBox_TextChanged);
             // 
             // StatusCommandsLable

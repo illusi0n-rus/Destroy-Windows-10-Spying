@@ -9,7 +9,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Management;
-using System.Net;
 using System.Resources;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
@@ -53,8 +52,7 @@ namespace DWS
             try
             {
                 Icon = Icon.ExtractAssociatedIcon(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                Text +=
-                    string.Format(Resources.MainDwsForm_MainDwsForm_v_0_, FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion);
+                Text += @"Final Vesion";
             }
             catch
             {
@@ -64,9 +62,9 @@ namespace DWS
             ChangeLanguage(); // change language
             StealthMode(args); //check args
             new Thread(AnimateBackground).Start(); // animate border (new thread)
-            new Thread(AutoUpdate).Start(); // auto update
+            //new Thread(AutoUpdate).Start(); // auto update
         }
-
+        /*
         void AutoUpdate()
         {
             try
@@ -93,7 +91,7 @@ namespace DWS
             {
                 MessageBox.Show(string.Format(Resources.MainDwsForm_AutoUpdate_, ex.Message), @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        }*/
 
         public override string Text
         {
@@ -456,12 +454,10 @@ namespace DWS
                     "MapsBroker", // Downloaded Maps Manager
                     "NetTcpPortSharing", // Net.Tcp Port Sharing Service
                     "RemoteAccess", // Routing and Remote Access
-                    "RemoteRegistry", // Remote Registry
                     "SharedAccess", // Internet Connection Sharing (ICS)
                     "TrkWks", // Distributed Link Tracking Client
                     "WbioSrvc", // Windows Biometric Service
                     "WMPNetworkSvc", // Windows Media Player Network Sharing Service
-                    "WSearch", // Windows Search
                     "XblAuthManager", // Xbox Live Auth Manager
                     "XblGameSave", // Xbox Live Game Save Service
                     "XboxNetApiSvc", // Xbox Live Networking Service
@@ -469,7 +465,6 @@ namespace DWS
                     "HomeGroupProvider", // HomeGroup Provider
                     "bthserv", // Bluetooth Support Service
                     "wscsvc", // Security Center Service
-                    //"WlanSvc", // WLAN AutoConfig #TODO: Path only. Not disable.
                     "OneSyncSvc", // Sync Host Service
                     "AeLookupSvc", // Application Experience Service
                     "PcaSvc", // Program Compatibility Assistant
@@ -798,8 +793,6 @@ namespace DWS
             try
             {
                 string[] hostsdomains = {
-                    "answers.microsoft.com",
-                    "apps.skype.com",
                     "ars.smartscreen.microsoft.com",
                     "az361816.vo.msecnd.net",
                     "az512334.vo.msecnd.net",
@@ -819,34 +812,27 @@ namespace DWS
                     "feedback.microsoft-hohm.com",
                     "feedback.search.microsoft.com",
                     "feedback.windows.com",
-                    "g.live.com",
                     "img-s-msn-com.akamaized.net",
                     "insiderppe.cloudapp.net",
                     "licensing.mp.microsoft.com",
-                    "login.live.com",
-                    "m.hotmail.com",
                     "mediaredirect.microsoft.com",
                     "msftncsi.com",
                     "officeclient.microsoft.com",
                     "oneclient.sfx.ms",
-                    "pricelist.skype.com",
                     "pti.store.microsoft.com",
                     "query.prod.cms.rt.microsoft.com",
                     "register.cdpcs.microsoft.com",
-                    "s.gateway.messenger.live.com",
                     "s0.2mdn.net",
                     "sO.2mdn.net",
                     "search.msn.com",
                     "settings-ssl.xboxlive.com",
                     "static.2mdn.net",
-                    "storage.live.com",
                     "store-images.s-microsoft.com",
                     "storeedgefd.dsx.mp.microsoft.com",
                     "support.microsoft.com",
                     "tile-service.weather.microsoft.com",
                     "time.windows.com",
                     "tk2.plt.msn.com",
-                    "ui.skype.com",
                     "urs.smartscreen.microsoft.com",
                     "wdcp.microsoft.com",
                     "wdcpalt.microsoft.com",
@@ -1234,17 +1220,10 @@ namespace DWS
                     "mobile.pipe.aria.microsoft.com",
                     "msedge.net",
                     "msntest.serving-sys.com",
-                    "nexus.officeapps.live.com",
-                    "nexusrules.officeapps.live.com",
                     "oca.telemetry.microsoft.com",
                     "oca.telemetry.microsoft.com.nsatc.net",
-                    "onesettings-bn2.metron.live.com.nsatc.net",
-                    "onesettings-cy2.metron.live.com.nsatc.net",
-                    "onesettings-db5.metron.live.com.nsatc.net",
-                    "onesettings-hk2.metron.live.com.nsatc.net",
                     "pre.footprintpredict.com",
                     "preview.msn.com",
-                    "rad.live.com",
                     "rad.msn.com",
                     "redir.metaservices.microsoft.com",
                     "reports.wes.df.telemetry.microsoft.com",
@@ -1266,7 +1245,6 @@ namespace DWS
                     "sqm.df.telemetry.microsoft.com",
                     "sqm.telemetry.microsoft.com",
                     "sqm.telemetry.microsoft.com.nsatc.net",
-                    "ssw.live.com",
                     "storecatalogrevocation.storequality.microsoft.com",
                     "survey.watson.microsoft.com",
                     "t0.ssl.ak.dynamic.tiles.virtualearth.net",
@@ -1292,7 +1270,6 @@ namespace DWS
                     "vortex.data.glbdns2.microsoft.com",
                     "vortex.data.metron.live.com.nsatc.net",
                     "vortex.data.microsoft.com",
-                    "watson.live.com",
                     "watson.microsoft.com",
                     "watson.ppe.telemetry.microsoft.com",
                     "watson.telemetry.microsoft.com",
