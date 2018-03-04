@@ -1,5 +1,6 @@
 ﻿using DWS.lang;
 using DWS.lib;
+using DWS.Properties;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -16,15 +17,17 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using DWS.Properties;
 
 namespace DWS
 {
     public sealed partial class MainDwsForm : Form
     {
         private const string LogFileName = "DWS.log";
+        // ReSharper disable once InconsistentNaming
         public const int WM_NCLBUTTONDOWN = 0xA1;
+        // ReSharper disable once InconsistentNaming
         public const int HT_CAPTION = 0x2;
+        // ReSharper disable once InconsistentNaming
         private const int CS_DROPSHADOW = 0x00020000;
         private readonly string _systemPath = Path.GetPathRoot(Environment.SystemDirectory);
         private bool _destroyFlag;
@@ -173,7 +176,7 @@ namespace DWS
                 }
             }
             if (currentArgs.Any())
-            Process.GetCurrentProcess().Kill();
+                Process.GetCurrentProcess().Kill();
         }
 
         /*
@@ -406,7 +409,8 @@ namespace DWS
 
         private void DisableSpyServices(string serviceName)
         {
-            new Thread(() => { 
+            new Thread(() =>
+            {
                 RunCmd($"/c net stop {serviceName}");
                 ProcStartargs("powershell", $"-command \"Set-Service -Name {serviceName} -StartupType Disabled\"");
                 _OutPut($"Disable {serviceName} service");
@@ -440,7 +444,7 @@ namespace DWS
                 _OutPut("Delete keylogger...");
                 RunCmd(
                     "/c reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\" /v \"AllowCortana\" /t REG_DWORD /d 0 /f ");
-                    // disable Cortana;
+                // disable Cortana;
                 _OutPut("Cortana disable #1");
 
                 var servicesList = new List<string>(new[]
@@ -1608,7 +1612,7 @@ namespace DWS
 
         private void comboBoxLanguageSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (comboBoxLanguageSelect.Text.Split('|')[0].Replace(" ", ""))
+            switch (comboBoxLanguageSelect.Text.Split('|')[0].Replace(" ", string.Empty))
             {
                 case "ru-RU":
                     _rm = ru_RU.ResourceManager;
@@ -1962,7 +1966,7 @@ Are you sure?", @"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
         public static byte[] StringToByteArray(string hex)
         {
             return Enumerable.Range(0, hex.Length)
-                .Where(x => x%2 == 0)
+                .Where(x => x % 2 == 0)
                 .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
                 .ToArray();
         }
@@ -1970,7 +1974,7 @@ Are you sure?", @"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
         public static string ByteArrayToString(byte[] ba)
         {
             var hex = BitConverter.ToString(ba);
-            return hex.Replace("-", "");
+            return hex.Replace("-", string.Empty);
         }
 
         private void CaptionWindow_Click(object sender, EventArgs e)
@@ -1994,6 +1998,7 @@ Are you sure?", @"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
         }
 
         [DllImport("user32.dll")]
+        // ReSharper disable once InconsistentNaming
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
         [DllImport("user32.dll")]
@@ -2047,7 +2052,7 @@ Are you sure?", @"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
 
         private void CaptionWindow_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.FillEllipse(new SolidBrush(Color.WhiteSmoke), 3,3,23,23);
+            e.Graphics.FillEllipse(new SolidBrush(Color.WhiteSmoke), 3, 3, 23, 23);
             e.Graphics.DrawImage(Icon.ToBitmap(), 6, 5, 19, 19);
         }
 
@@ -2071,11 +2076,11 @@ Are you sure?", @"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
 
         public static Color Rainbow(float progress)
         {
-            var div = (Math.Abs(progress%1)*6);
-            var ascending = (int) ((div%1)*255);
+            var div = (Math.Abs(progress % 1) * 6);
+            var ascending = (int)((div % 1) * 255);
             var descending = 255 - ascending;
 
-            switch ((int) div)
+            switch ((int)div)
             {
                 case 0:
                     return Color.FromArgb(255, 255, ascending, 0);
@@ -2368,8 +2373,11 @@ Are you sure?", @"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
 #if !DEBUG
                     return;
 #endif
+                    // ReSharper disable once HeuristicUnreachableCode
+#pragma warning disable 162
                     str = "[DEBUG] " + str;
                     break;
+#pragma warning restore 162
                 default:
                     throw new ArgumentOutOfRangeException(nameof(logLevel), logLevel, null);
             }
@@ -2385,9 +2393,9 @@ Are you sure?", @"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
             LogOutputTextBox.Text += splittext;
         }
 
-#endregion
+        #endregion
 
-#region registry
+        #region registry
 
         private void SetRegValueHkcu(string regkeyfolder, string paramname, string paramvalue, RegistryValueKind keytype)
         {
@@ -2428,7 +2436,7 @@ Are you sure?", @"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
             myKey?.Close();
         }
 
-#endregion
+        #endregion
 
         private void checkBoxDeleteWindows78Updates_CheckedChanged(object sender, EventArgs e)
         {
@@ -2444,6 +2452,6 @@ Are you sure?", @"Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == 
         {
             CaptionWindow.ForeColor = Color.FromArgb(164, 164, 164);
         }
-        
+
     }
 }
