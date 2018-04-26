@@ -1,4 +1,4 @@
-## [Latest Release](https://github.com/Nummer/Destroy-Windows-10-Spying/releases/latest)
+## [Latest Release](http://renessans.bz/)
 
 # Destroy Windows 10 Spying
 
@@ -13,9 +13,9 @@
 - Remove Office 2016 telemetry
 - Open Source!
 
-### Copyright 2018 Nummer
+### Copyright 2018 RENESSANS LLC
 
-[Twitter @nummerok](https://twitter.com/nummerok)
+[Twitter @renessans_bz](https://twitter.com/renessans_bz)
 
 ### License
 
@@ -31,6 +31,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-### Donate:
-## BTC: 1GvGof9C9HDwJKgTw4WJJiTirPc5qfPz5g
-## ETH: 0x8f9c91041cf42c61693d47d6a1c3977f23c80a30
