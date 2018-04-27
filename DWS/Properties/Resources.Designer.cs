@@ -69,5 +69,49 @@ namespace DWS.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Registry Editor Version 5.00
+        ///
+        ///[HKEY_LOCALMACHINE\SOFTWARE\Microsoft\Windows Defender]
+        ///&quot;ProductStatus&quot;=dword:00000000
+        ///&quot;ManagedDefenderProductType&quot;=dword:00000000
+        ///&quot;DisableAntiVirus&quot;=dword:00000001
+        ///&quot;DisableAntiSpyware&quot;=dword:00000001
+        ///&quot;DisableRoutinelyTakingAction&quot;=dword:00000001
+        ///&quot;OneTimeSqmDataSent&quot;=dword:00000001
+        ///
+        ///[HKEY_LOCALMACHINE\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection]
+        ///&quot;DisableAntiSpywareRealtimeProtection&quot;=dword:00000001
+        ///&quot;DisableRealtimeMonitoring&quot;=dword:00000001
+        ///&quot;Dp [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string windowsdefender_disable {
+            get {
+                return ResourceManager.GetString("windowsdefender_disable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Registry Editor Version 5.00
+        ///
+        ///[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender]
+        ///&quot;ProductStatus&quot;=dword:00000000
+        ///&quot;ManagedDefenderProductType&quot;=dword:00000000
+        ///&quot;DisableAntiVirus&quot;=dword:00000000
+        ///&quot;DisableAntiSpyware&quot;=dword:00000000
+        ///&quot;DisableRoutinelyTakingAction&quot;=dword:00000000
+        ///&quot;OneTimeSqmDataSent&quot;=dword:00000001
+        ///
+        ///[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection]
+        ///&quot;DisableAntiSpywareRealtimeProtection&quot;=dword:00000000
+        ///&quot;DisableRealtimeMonitoring&quot;=dword:00000000
+        ///&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string windowsdefender_enable {
+            get {
+                return ResourceManager.GetString("windowsdefender_enable", resourceCulture);
+            }
+        }
     }
 }

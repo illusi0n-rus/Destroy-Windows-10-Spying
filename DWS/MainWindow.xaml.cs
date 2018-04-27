@@ -176,6 +176,10 @@ namespace DWS
             AboutInfo.Text =
                 "Destroy Windows Spying (DWS) - a free utility that prevents tracking of your activity in Windows 10 and enhances the security and privacy settings of the operating system from Microsoft.\r\n\r\n\r\n" + 
                 "\tChangelog:\r\n" +
+                "\t\t\tv 1.0.1.0 Hosts manager and fixes" +
+                "\t\t\t+ Add hosts manager" +
+                "\t\t\t+ Add enable windows defender feature" +
+                "\t\t\t* Fix PcaSvc error" + 
                 "\t\t1.0 First release!";
 
             new Thread(AutoUpdate).Start(); // auto update
@@ -230,6 +234,7 @@ namespace DWS
             catch (Exception e)
             {
                 Logger.Log("Error check updates.", Logger.LogType.ERROR);
+                Logger.Log($"Exception {e}", Logger.LogType.DEBUG);
             }
         }
 
@@ -413,45 +418,8 @@ namespace DWS
                 {
                     try
                     {
-                        WindowsUtil.SetRegValueHklm(@"SOFTWARE\Policies\Microsoft\Windows Defender",
-                            "DisableAntiSpyware", "1",
-                            RegistryValueKind.DWord);
-                        WindowsUtil.SetRegValueHklm(@"SOFTWARE\Microsoft\Windows Defender",
-                            "DisableAntiSpyware", "1",
-                            RegistryValueKind.DWord);
-                        WindowsUtil.SetRegValueHklm(@"SOFTWARE\Microsoft\Windows Defender",
-                            "DisableRoutinelyTakingAction", "1",
-                            RegistryValueKind.DWord);
-                        WindowsUtil.SetRegValueHklm(@"SOFTWARE\Microsoft\Windows Defender",
-                            "ProductStatus", "0",
-                            RegistryValueKind.DWord);
-                        WindowsUtil.SetRegValueHklm(@"SOFTWARE\Microsoft\Windows Defender\Real-Time Protection",
-                            "DisableAntiSpywareRealtimeProtection", "1",
-                            RegistryValueKind.DWord);
-                        WindowsUtil.SetRegValueHklm(@"SOFTWARE\Microsoft\Windows Defender\Real-Time Protection",
-                            "DisableRealtimeMonitoring", "1",
-                            RegistryValueKind.DWord);
-                        WindowsUtil.SetRegValueHklm(@"SOFTWARE\Microsoft\Windows Defender\Scan",
-                            "AutomaticallyCleanAfterScan", "0",
-                            RegistryValueKind.DWord);
-                        WindowsUtil.SetRegValueHklm(@"SOFTWARE\Microsoft\Windows Defender\Scan",
-                            "ScheduleDay", "8",
-                            RegistryValueKind.DWord);
-                        WindowsUtil.SetRegValueHklm(@"SOFTWARE\Microsoft\Windows Defender\UX Configuration",
-                            "AllowNonAdminFunctionality", "0",
-                            RegistryValueKind.DWord);
-                        WindowsUtil.SetRegValueHklm(@"SOFTWARE\Microsoft\Windows Defender\UX Configuration",
-                            "DisablePrivacyMode", "1",
-                            RegistryValueKind.DWord);
-                        WindowsUtil.SetRegValueHklm(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet",
-                            "SpyNetReporting", "0",
-                            RegistryValueKind.DWord);
-                        WindowsUtil.SetRegValueHklm(@"SOFTWARE\Policies\Microsoft\Windows Defender\Spynet",
-                            "SubmitSamplesConsent", "2",
-                            RegistryValueKind.DWord);
-                        WindowsUtil.SetRegValueHklm(@"SOFTWARE\Policies\Microsoft\MRT",
-                            "DontReportInfectionInformation", "1",
-                            RegistryValueKind.DWord);
+                        // REG FILE IMPORT
+                        WindowsUtil.ProcStartargs("regedit.exe", $"/s \"{WindowsUtil.ExtractResourceToTemp(Encoding.ASCII.GetBytes(Properties.Resources.windowsdefender_disable), "windowsdefender_disable.reg")}\"");
                         Logger.Log("Disable Windows Defender complete.", Logger.LogType.SUCCESS);
                         WindowsUtil.SetRegValueHklm(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer",
                             "SmartScreenEnabled", "Off",
@@ -500,6 +468,22 @@ namespace DWS
             WindowsUtil.RunCmd("/c net start wuauserv");
             WindowsUtil.RunCmd("/c sc config wuauserv start=auto");
             Logger.Log("Windows update enabled.", Logger.LogType.INFO);
+        }
+
+        private void EnableWindowsDefenderClick(object sender, RoutedEventArgs e)
+        {
+            // REG FILE IMPORT
+            WindowsUtil.ProcStartargs("regedit.exe", $"/s \"{WindowsUtil.ExtractResourceToTemp(Encoding.ASCII.GetBytes(Properties.Resources.windowsdefender_enable), "windowsdefender_enable.reg")}\"");
+            Logger.Log("Enable Windows Defender complete.", Logger.LogType.SUCCESS);
+
+        }
+
+        private void OpenHostsManager(object sender, RoutedEventArgs e)
+        {
+            var hostsManagerWindow = new HostsManager();
+            this.Hide();
+            hostsManagerWindow.ShowDialog();
+            this.Show();
         }
     }
 }

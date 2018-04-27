@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
+using DWS.Properties;
 using Microsoft.Win32;
 
 namespace DWS.lib
@@ -94,6 +96,15 @@ namespace DWS.lib
         public static string GetSystemBuild()
         {
             return Convert.ToString(ReadSubKeyValue(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "BuildLabEx"));
+        }
+
+        public static string ExtractResourceToTemp(byte[] bytesFile, string filename)
+        {
+            var filePath = Path.Combine(Path.GetTempPath(), filename);
+            File.Create(filePath).Close();
+            File.WriteAllBytes(filePath, bytesFile);
+            Logger.Log($"Created temp file complete. Path: {filePath}", Logger.LogType.DEBUG);
+            return filePath;
         }
 
         public static void RunCmd(string args)

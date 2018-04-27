@@ -35,14 +35,7 @@ namespace DWS.lib
 
         public static bool HostExitsInHostsFile(string hostname)
         {
-            foreach (var line in File.ReadAllLines(Hostslocation))
-            {
-                if (line.EndsWith($" {hostname}"))
-                {
-                    return true;
-                }
-            }
-            return false;
+            return File.ReadAllLines(Hostslocation).Any(line => line.EndsWith($" {hostname}"));
         }
     }
 }

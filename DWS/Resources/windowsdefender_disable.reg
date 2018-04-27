@@ -1,0 +1,33 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCALMACHINE\SOFTWARE\Microsoft\Windows Defender]
+"ProductStatus"=dword:00000000
+"ManagedDefenderProductType"=dword:00000000
+"DisableAntiVirus"=dword:00000001
+"DisableAntiSpyware"=dword:00000001
+"DisableRoutinelyTakingAction"=dword:00000001
+"OneTimeSqmDataSent"=dword:00000001
+
+[HKEY_LOCALMACHINE\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection]
+"DisableAntiSpywareRealtimeProtection"=dword:00000001
+"DisableRealtimeMonitoring"=dword:00000001
+"DpaDisabled"=dword:00000001
+
+[HKEY_LOCALMACHINE\SOFTWARE\Microsoft\Windows Defender\Scan]
+"AutomaticallyCleanAfterScan"=dword:00000000
+"ScheduleDay"=dword:00000008
+
+[HKEY_LOCALMACHINE\SOFTWARE\Microsoft\Windows Defender\UX Configuration]
+"AllowNonAdminFunctionality"=dword:00000000
+"DisablePrivacyMode"=dword:00000001
+
+[HKEY_LOCALMACHINE\SOFTWARE\Policies\Microsoft\MRT]
+"DontReportInfectionInformation"=dword:00000001
+
+[HKEY_LOCALMACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
+"DisableAntiVirus"=dword:00000001
+"DisableAntiSpyware"=dword:00000001
+
+[HKEY_LOCALMACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]
+"SpyNetReporting"=dword:00000000
+"SubmitSamplesConsent"=dword:00000002

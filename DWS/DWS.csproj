@@ -65,6 +65,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ToolsWindow\HostsManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,6 +78,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DWSResources.cs" />
+    <Compile Include="ToolsWindow\HostsManager.xaml.cs">
+      <DependentUpon>HostsManager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="lib\DWSFunctions.cs" />
     <Compile Include="lib\HostsEditor.cs" />
     <Compile Include="lib\Paths.cs" />
@@ -112,6 +119,8 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\windowsdefender_disable.reg" />
+    <None Include="Resources\windowsdefender_enable.reg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
