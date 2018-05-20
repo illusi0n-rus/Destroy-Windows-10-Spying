@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio 2017
+VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DWS", "DWS\DWS.csproj", "{01D37BC2-DFF5-4374-A1A9-C22CF300CBC7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DWS_Lite", "DWS\DWS_Lite.csproj", "{01D37BC2-DFF5-4374-A1A9-C22CF300CBC7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "updater", "updater\updater.csproj", "{DDD8A332-553E-4191-BA4A-AC6F72F4AD37}"
 EndProject

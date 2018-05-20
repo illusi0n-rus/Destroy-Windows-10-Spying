@@ -155,7 +155,7 @@ namespace DWS
             Logger.mainTextBoxBase = paragraph;
             Logger.richTextBox = LogTextBox;
             this.DataContext = this;
-            RenessansLogo.Background = new ImageBrush
+            /* RenessansLogo.Background = new ImageBrush
             {
                 ImageSource = Imaging.CreateBitmapSourceFromHBitmap(
                     Properties.Resources.white_500.GetHbitmap(),
@@ -163,7 +163,7 @@ namespace DWS
                     System.Windows.Int32Rect.Empty,
                     BitmapSizeOptions.FromWidthAndHeight(Properties.Resources.white_500.Width,
                         Properties.Resources.white_500.Height))
-            };
+            }; */
             SourceInitialized += (s, e) =>
             {
                 IntPtr handle = (new WindowInteropHelper(this)).Handle;
@@ -171,16 +171,16 @@ namespace DWS
             };
             MinimizeButton.Click += (sender, args) => WindowState = WindowState.Minimized;
             CloseButton.Click += (sender, args) => Close();
-            RenessansLogo.MouseDown += (sender, args) => Process.Start("http://renessans.bz/");
+            // RenessansLogo.MouseDown += (sender, args) => Process.Start("http://renessans.bz/");
             CheckSystemStatus();
             AboutInfo.Text =
-                "Destroy Windows Spying (DWS) - a free utility that prevents tracking of your activity in Windows 10 and enhances the security and privacy settings of the operating system from Microsoft.\r\n\r\n\r\n" + 
-                "\tChangelog:\r\n" +
-                "\t\t\tv 1.0.1.0 Hosts manager and fixes" +
-                "\t\t\t+ Add hosts manager" +
-                "\t\t\t+ Add enable windows defender feature" +
-                "\t\t\t* Fix PcaSvc error" + 
-                "\t\t1.0 First release!";
+                "Destroy Windows Spying (DWS) - a free utility that prevents tracking of your activity in Windows 10 and enhances the security and privacy settings of the operating system from Microsoft.\r\n\r\n" + 
+                "Changelog:\r\n\n" +
+                "v 1.0.1.0 Hosts manager and fixes\r\n" +
+                "+ Add hosts manager\r\n" +
+                "+ Add enable windows defender feature\r\n" +
+                "* Fix PcaSvc error\r\n" + 
+                "1.0 First release!";
 
             new Thread(AutoUpdate).Start(); // auto update
         }
@@ -246,11 +246,11 @@ namespace DWS
                 SwitchCreateRestorePoint.IsChecked = false;
                 SwitchCreateRestorePoint.IsEnabled = false;
             }
-            if (WindowsUtil.GetWindowsBuildNumber() < 10000)
+            /* if (WindowsUtil.GetWindowsBuildNumber() < 10000)
             {
                 MessageBox.Show("Please run DWS on Windows 10.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
                 Close();
-            }
+            } */
             SwitchUacEnabled.IsChecked = WindowsUtil.UAC_Status();
             Logger.Log($"System info: {WindowsUtil.GetProductName()}, Version:{WindowsUtil.GetSystemBuild()}", Logger.LogType.INFO);
         }

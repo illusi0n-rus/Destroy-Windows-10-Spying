@@ -5,7 +5,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <Style TargetType="{x:Type Label}">
-            <Setter Property="Foreground" Value="#ffffff"/>
+            <Setter Property="Foreground" Value="#000000"/>
         </Style>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="#5400D7"/>
@@ -46,10 +46,9 @@
                     <Setter Property="Foreground" Value="#000000"/>
                 </Trigger>
             </Style.Triggers>
-            
         </Style>
         <Style TargetType="{x:Type TabControl}">
-            <Setter Property="Background" Value="#181724"/>
+            <Setter Property="Background" Value="#EEEEEE"/>
         </Style>
         <Style TargetType="{x:Type TabItem}">
             <Setter Property="Foreground" Value="#ffffff"/>
@@ -81,7 +80,7 @@
             </Setter>
         </Style>
         <Style TargetType="{x:Type CheckBox}">
-            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="Foreground" Value="#000000"/>
             <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
             <Setter Property="Template">
                 <Setter.Value>

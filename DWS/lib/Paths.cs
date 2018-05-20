@@ -16,7 +16,5 @@ namespace DWS.lib
         public static string System32Location =
             File.Exists(SysDir + @"Windows\Sysnative\cmd.exe") ?
                 SysDir + @"Windows\Sysnative\" : SysDir + @"Windows\System32\";
-
-
     }
 }
