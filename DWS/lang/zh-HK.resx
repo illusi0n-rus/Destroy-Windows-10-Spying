@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnDeleteAllWindows10Apps" xml:space="preserve">
+    <value>删除所有 Windows 10 Metro app</value>
+  </data>
+  <data name="btnDeleteOneDrive" xml:space="preserve">
+    <value>删除 OneDrive</value>
+  </data>
+  <data name="btnOpenAndEditHosts" xml:space="preserve">
+    <value>打開並編輯 HOSTS 文件</value>
+  </data>
+  <data name="btnProfessionalMode" xml:space="preserve">
+    <value>開啟專業模式</value>
+  </data>
+  <data name="btnRestoreSystem" xml:space="preserve">
+    <value>還原系統</value>
+  </data>
+  <data name="checkBoxAddToHosts" xml:space="preserve">
+    <value>添加監視網站到 HOSTS 文件和 Windows 防火牆</value>
+  </data>
+  <data name="checkBoxCreateSystemRestorePoint" xml:space="preserve">
+    <value>創建系統還原點</value>
+  </data>
+  <data name="checkBoxDeleteWindows10Apps" xml:space="preserve">
+    <value>删除 Windows 10 Metro app</value>
+  </data>
+  <data name="checkBoxDisablePrivateSettings" xml:space="preserve">
+    <value>禁用私隱設定</value>
+  </data>
+  <data name="checkBoxDisableWindowsDefender" xml:space="preserve">
+    <value>禁用 Windows Defender</value>
+  </data>
+  <data name="checkBoxKeyLoggerAndTelemetry" xml:space="preserve">
+    <value>刪除鍵盤側錄和遙測程式</value>
+  </data>
+  <data name="checkBoxSetDefaultPhoto" xml:space="preserve">
+    <value>設定 Windows 相片檢視器為預設程式</value>
+  </data>
+  <data name="checkBoxSPYTasks" xml:space="preserve">
+    <value>禁用監控工作排程</value>
+  </data>
+  <data name="Complete" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="CompleteMSG" xml:space="preserve">
+    <value>完成！
+需要重啟以禁用所有監控程式。
+現在重啟？</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="DeleteApps" xml:space="preserve">
+    <value>刪除程式</value>
+  </data>
+  <data name="Disable" xml:space="preserve">
+    <value>禁用</value>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>啟用</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>錯誤</value>
+  </data>
+  <data name="ErrorMSG" xml:space="preserve">
+    <value>完成。 錯誤 - {0}
+需要重啟以禁用所有監控程式。
+現在重啟？</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="labelInfoDeleteMetroApps" xml:space="preserve">
+    <value>Metro app 將永久刪除，無法恢復。</value>
+  </data>
+  <data name="Links" xml:space="preserve">
+    <value>連結</value>
+  </data>
+  <data name="PressOkAndWait15" xml:space="preserve">
+    <value>點擊 OK，並等待 15 分鐘</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>問題</value>
+  </data>
+  <data name="Really" xml:space="preserve">
+    <value>真的？</value>
+  </data>
+  <data name="Restart" xml:space="preserve">
+    <value>需要重啟。
+現在重啟？</value>
+  </data>
+  <data name="tabPageAbout" xml:space="preserve">
+    <value>關於</value>
+  </data>
+  <data name="tabPageMain" xml:space="preserve">
+    <value>主界面</value>
+  </data>
+  <data name="tabPageReadMe" xml:space="preserve">
+    <value>讀我</value>
+  </data>
+  <data name="tabPageSettings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="tabPageUtilites" xml:space="preserve">
+    <value>工具</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="RemoveAllOldFirewallRules" xml:space="preserve">
+    <value>移除所有舊的 DWS 防火牆規則</value>
+  </data>
+  <data name="ReportABug" xml:space="preserve">
+    <value>報告 bug</value>
+  </data>
+  <data name="ReadMeTextBox" xml:space="preserve">
+    <value>這個程式是用來禁用 Windows 7/8/8.1/10 上的監視功能。
+整個程式是開源的，託管在 Github 上。
+程式的大多數操作是不可逆的，甚至系統還原也不能還原更改。
+現在來說，它是相當有效的程式。它正在開發中，並擁有一個由 Windows 10 用戶組成的社區。其中一些人幫助重寫代碼以提高程式的效能，另一些則將程式翻譯成其他語言。
+
+命令行參數：
+/lang= - 設定程式啟動時的語言。例子: /lang=en
+/deleteapp= - 刪除一個 Windows Metro app。例子: /deleteapp=bing 或 /deleteapp=note
+/destroy - 移除監控程式的設定。
+重要！參數 /destroy 和 /deleteapp= 不能同時使用，且參數 /deleteapp= 不能多次使用。</value>
+  </data>
+  <data name="FindOffice16FileT" xml:space="preserve">
+    <value>請指定 msosync.exe 的路徑。如果 Office 2016 按標準安裝在 C:，請點擊 "取消"</value>
+  </data>
+  <data name="checkBoxDeleteGWX" xml:space="preserve">
+    <value>删除 GWX (取得Windows 10)</value>
+  </data>
+  <data name="checkBoxDeleteWindows78Updates" xml:space="preserve">
+    <value>刪除用於監控的更新</value>
+  </data>
+  <data name="labelUninstallUpdates" xml:space="preserve">
+    <value>移除更新：</value>
+  </data>
+  <data name="btnFixRotateScreen" xml:space="preserve">
+    <value>修正屏幕不旋轉</value>
+  </data>
+</root>

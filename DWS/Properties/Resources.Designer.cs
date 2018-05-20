@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DWS.Properties {
+namespace DWS_Lite.Properties {
     using System;
     
     
@@ -19,7 +19,7 @@ namespace DWS.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -39,7 +39,7 @@ namespace DWS.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DWS_Lite.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,54 +63,70 @@ namespace DWS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap white_500 {
+        internal static System.Drawing.Bitmap close {
             get {
-                object obj = ResourceManager.GetObject("white_500", resourceCulture);
+                object obj = ResourceManager.GetObject("close", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Windows Registry Editor Version 5.00
-        ///
-        ///[HKEY_LOCALMACHINE\SOFTWARE\Microsoft\Windows Defender]
-        ///&quot;ProductStatus&quot;=dword:00000000
-        ///&quot;ManagedDefenderProductType&quot;=dword:00000000
-        ///&quot;DisableAntiVirus&quot;=dword:00000001
-        ///&quot;DisableAntiSpyware&quot;=dword:00000001
-        ///&quot;DisableRoutinelyTakingAction&quot;=dword:00000001
-        ///&quot;OneTimeSqmDataSent&quot;=dword:00000001
-        ///
-        ///[HKEY_LOCALMACHINE\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection]
-        ///&quot;DisableAntiSpywareRealtimeProtection&quot;=dword:00000001
-        ///&quot;DisableRealtimeMonitoring&quot;=dword:00000001
-        ///&quot;Dp [rest of string was truncated]&quot;;.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string windowsdefender_disable {
+        internal static System.Drawing.Bitmap close1 {
             get {
-                return ResourceManager.GetString("windowsdefender_disable", resourceCulture);
+                object obj = ResourceManager.GetObject("close1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Windows Registry Editor Version 5.00
-        ///
-        ///[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender]
-        ///&quot;ProductStatus&quot;=dword:00000000
-        ///&quot;ManagedDefenderProductType&quot;=dword:00000000
-        ///&quot;DisableAntiVirus&quot;=dword:00000000
-        ///&quot;DisableAntiSpyware&quot;=dword:00000000
-        ///&quot;DisableRoutinelyTakingAction&quot;=dword:00000000
-        ///&quot;OneTimeSqmDataSent&quot;=dword:00000001
-        ///
-        ///[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection]
-        ///&quot;DisableAntiSpywareRealtimeProtection&quot;=dword:00000000
-        ///&quot;DisableRealtimeMonitoring&quot;=dword:00000000
-        ///&quot; [rest of string was truncated]&quot;;.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string windowsdefender_enable {
+        internal static System.Drawing.Bitmap close2 {
             get {
-                return ResourceManager.GetString("windowsdefender_enable", resourceCulture);
+                object obj = ResourceManager.GetObject("close2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minimize {
+            get {
+                object obj = ResourceManager.GetObject("minimize", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minimize1 {
+            get {
+                object obj = ResourceManager.GetObject("minimize1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minimize2 {
+            get {
+                object obj = ResourceManager.GetObject("minimize2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap warning {
+            get {
+                object obj = ResourceManager.GetObject("warning", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
