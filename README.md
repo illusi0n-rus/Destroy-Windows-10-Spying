@@ -13,7 +13,7 @@
 - Remove Office 2016 telemetry
 - Open Source!
 
-### Copyright 2018 RENESSANS LLC
+### Copyright 2016 RENESSANS LLC
 
 [Twitter @renessans_bz](https://twitter.com/renessans_bz)
 
