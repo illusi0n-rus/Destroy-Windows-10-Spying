@@ -13,9 +13,9 @@ namespace updater
     {
         static void Main(string[] args)
         {
-            File.Delete(args[0]);
-            new WebClient().DownloadFile($"http://download.renessans.bz/{args[1]}", args[0]);
-            Process.Start(args[1]);
+            File.Delete("DWS.exe");
+            new WebClient().DownloadFile($"http://download.renessans.bz/DWS.exe", "DWS.exe");
+            Process.Start("DWS.exe");
             Process.GetCurrentProcess().Kill();
         }
     }
