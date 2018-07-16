@@ -172,19 +172,19 @@ namespace DWS
             "65.55.39.10",
             "77.67.29.176",
             "13.67.155.16", // MS STORE
-            /* "13.107.18.11", // Redmond MS OFFICE
+            "13.107.18.11", // Redmond MS OFFICE
             "13.107.21.200", // Redmond MS OFFICE
             "13.107.3.128", // Redmond MS OFFICE
             "13.107.5.88", // Redmond MS OFFICE
+            "204.79.197.200", // Redmond MS OFFICE
             "204.79.197.213", // Redmond MS OFFICE
             "204.79.197.229", // Redmond MS OFFICE
-            "65.55.52.23", // Redmond MS OFFICE
-            "65.55.52.56" // Redmond MS OFFICE */
-            "204.79.197.200", // Redmond MS OFFICE
             "224.0.0.22", //mcast
             "224.0.0.251", //mcast
             "224.0.0.252", //mcast
-            "65.52.98.233" //co2.activation-v2.sls.microsoft.com
+            "65.52.98.233", //co2.activation-v2.sls.microsoft.com
+            "65.55.52.23", // Redmond MS OFFICE
+            "65.55.52.56" // Redmond MS OFFICE
         };
 
         public static List<string> ServicesList = new List<string>(new[]
@@ -586,7 +586,6 @@ namespace DWS
             "ecn.dev.virtualearth.net",
             "eu.vortex.data.microsoft.com",
             "fe2.update.microsoft.com.akadns.net",
-            "fe3.delivery.dsp.mp.microsoft.com.nsatc.net",
             "feedback.microsoft-hohm.com",
             "feedback.search.microsoft.com",
             "feedback.windows.com",
@@ -621,8 +620,8 @@ namespace DWS
             "mobile.pipe.aria.microsoft.com",
             "msedge.net",
             "msftncsi.com",
+            "msn.com",
             "msnbot-207-46-194-33.search.msn.com",
-            "msnbot-65-55-108-23.search.msn.com",
             "msntest.serving-sys.com",
             "oca.telemetry.microsoft.com",
             "oca.telemetry.microsoft.com.nsatc.net",
@@ -648,7 +647,6 @@ namespace DWS
             "settings-ssl.xboxlive.com",
             "settings-win.data.microsoft.com",
             "settings-win-ppe.data.microsoft.com",
-            "sls.update.microsoft.com.akadns.net",
             "sn3301-c.1drv.com",
             "sn3301-e.1drv.com",
             "sn3301-g.1drv.com",
@@ -711,6 +709,7 @@ namespace DWS
             "www.msedge.net",
             "www.msftconnecttest.com",
             "www.msftncsi.com",
+            "www.msn.com",
             "104.87.88.177",
             "104.89.242.39",
             "104.96.147.3",
@@ -819,7 +818,15 @@ namespace DWS
             "65.55.252.93",
             "65.55.29.238",
             "65.55.39.10",
-            "77.67.29.176 # TH2 Spy IP"
+            "77.67.29.176 # TH2 Spy IP",
+            "13.107.18.11 # Redmond MS OFFICE",
+            "13.107.21.200 # Redmond MS OFFICE",
+            "13.107.3.128 # Redmond MS OFFICE",
+            "13.107.5.88 # Redmond MS OFFICE",
+            "204.79.197.213 # Redmond MS OFFICE",
+            "204.79.197.229 # Redmond MS OFFICE",
+            "65.55.52.23 # Redmond MS OFFICE",
+            "65.55.52.56 # Redmond MS OFFICE"
         };
     }
 }
