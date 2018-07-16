@@ -65,7 +65,7 @@
             </TabItem>
             <TabItem Header="About">
                 <Grid>
-                    <TextBlock TextWrapping="Wrap" Name="AboutInfo" Margin="10,10,10,129"/>
+                    <TextBlock TextWrapping="Wrap" Foreground="Navy" Name="AboutInfo" Margin="10,10,10,129"/>
                 </Grid>
             </TabItem>
         </TabControl>
