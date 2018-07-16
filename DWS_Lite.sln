@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
-VisualStudioVersion = 15.0.27703.2000
+VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DWS_Lite", "DWS\DWS_Lite.csproj", "{01D37BC2-DFF5-4374-A1A9-C22CF300CBC7}"
 EndProject
