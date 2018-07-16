@@ -176,6 +176,7 @@ namespace DWS
             AboutInfo.Text =
                 "Destroy Windows Spying (DWS) - a free utility that prevents tracking of your activity in Windows 10 and enhances the security and privacy settings of the operating system from Microsoft.\r\n\r\n" + 
                 "Changelog:\r\n\n" +
+                "v 1.0.2.0 Fix DWS stopped working\r\n" +
                 "v 1.0.1.0 Hosts manager and fixes\r\n" +
                 "+ Add hosts manager\r\n" +
                 "+ Add enable windows defender feature\r\n" +
